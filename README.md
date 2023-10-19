@@ -1,7 +1,6 @@
 
 # E-WASTE LOCATOR APP
 
-## PROBLEM STATEMENT
 Imagine a world where responsible e-waste disposal is not just a choice but a seamless and rewarding experience. Our project is your gateway to this reality. 
 We've designed an innovative web app that identifies devices, locates e-waste centers, educates users, and rewards eco-conscious actions. 
 Let's revolutionize e-waste management together.
@@ -22,6 +21,7 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -A prominent CTA button guides users to the education page, offering in-depth information, disposal tutorials, and further exploration.
 
 -Our educational resources also highlight a three-pronged sustainability approach—covering environmental, economic, and social responsibilities.
+![aaaaaaaaaaaaaaa](https://github.com/Techtidy/my-app-dev/assets/131174948/668d833c-7b95-4060-bd6d-605840fb27f5)
 
 ## TOOLS USED
 -Image Identification (Device Type)
