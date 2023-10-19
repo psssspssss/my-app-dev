@@ -33,3 +33,6 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -External Services 
 
 -Web Server and Hosting
+
+![Start  v User Opens App  v User RegistrationLogin ----- User Logged In    v  No    v  Display LoginRegister    v  User Registers    v  User Logs In    v  Yes    v  -------------------------    v v](https://github.com/Techtidy/my-app-dev/assets/131174948/68f05bb2-968d-4e8a-bdf8-982d2eebec22)
+
