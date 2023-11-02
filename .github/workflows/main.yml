@@ -1,0 +1,19 @@
+name: Deploy to Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Test Deployment
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.PAT }}" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            https://api.github.com/repos/Techtidy/my-app-test/actions/workflows/your-test-workflow-file.yml/dispatches \
+            -d '{"ref":"main"}'
