@@ -18,8 +18,8 @@ jobs:
           git config user.name "hrk-2109"
           git config user.email "eng21ct0007@dsu.edu.in"
           git clone https://github.com/Techtidy/my-app-dev.git
-          cp -R my-app-dev/* my-app-test/
-          cd my-app-test
+           cd my-app-test
+           cp -R my-app-dev/* my-app-test/
           git add .
           git commit -m "Automated update from source repository"
           git push
