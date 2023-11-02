@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -17,4 +18,4 @@ jobs:
         git remote add test-repo https://github.com/Techtidy/my-app-test.git
         git push test-repo main
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.TOKEN }}
