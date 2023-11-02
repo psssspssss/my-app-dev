@@ -1,27 +1,20 @@
-name: Push to test Repository
+name: Dev to Test
 
 on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Push to Destination Repository
-        run: |
-          git config user.name "hrk-2109"
-          git config user.email "eng21ct0007@dsu.edu.in"
-          git clone https://github.com/Techtidy/my-app-dev.git
-           cd my-app-test
-           cp -R my-app-dev/* my-app-test/
-          git add .
-          git commit -m "Automated update from source repository"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push code to test
+      run: |
+        git remote add test-repo https://github.com/Techtidy/my-app-test.git
+        git push test-repo main
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
