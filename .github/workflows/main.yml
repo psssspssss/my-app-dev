@@ -1,4 +1,4 @@
-name: Push to Destination Repository
+name: Push to test Repository
 
 on:
   push:
