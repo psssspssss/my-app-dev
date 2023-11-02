@@ -21,5 +21,4 @@ jobs:
           cd my-app-dev.git
           git push --mirror https://github.com/Techtidy/my-app-test.git
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TOKEN: ${{ secrets.token }}
