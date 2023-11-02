@@ -7,15 +7,15 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Push code to test
-      run: |
-        git remote add test-repo https://github.com/Techtidy/my-app-test.git
-        git push test-repo main
-      env:
-        GH_TOKEN: ${{ secrets.TOKEN }}
+      - name: Push code to test
+        run: |
+          git remote add test-repo https://github.com/Techtidy/my-app-test.git
+          git push test-repo main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
