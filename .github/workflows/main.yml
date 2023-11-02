@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code from Dev
       uses: actions/checkout@v2
       with:
-        repository: https://github.com/Techtidy/my-app-dev.git
+        repository: Techtidy/my-app-dev
         ref: main  # Change to the branch you want to deploy from
 
     - name: Push to Test
