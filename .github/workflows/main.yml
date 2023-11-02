@@ -1,27 +1,27 @@
-name: CI/CD Dev to Test
+name: Deploy from Dev to Test
 
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout code from Dev
       uses: actions/checkout@v2
-
-    - name: Build and test
-      run: |
-        # Add your build and test commands here
-        # Example: npm install && npm test
-        
-    - name: Push to Test Repository
-      uses: ad-m/github-push-action@v0.6.0
       with:
-        branch: main  # Change this to the target branch in my-app-test
-        directory: ./  # Directory containing the code you want to push
-      env:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: https://github.com/Techtidy/my-app-dev.git
+        ref: main  # Change to the branch you want to deploy from
+
+    - name: Push to Test
+      run: |
+        git clone https://github.com/Techtidy/my-app-test.git
+        cd my-app-test
+        git checkout main  # Change to the branch you want to deploy to in the "Test" repository
+        cp -r ../${{ github.workspace }}/* .
+        git add .
+        git commit -m "Automated push from Dev to Test"
+        git push
