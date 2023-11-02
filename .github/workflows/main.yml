@@ -22,5 +22,5 @@ jobs:
         branch: main  # Change this to the target branch in my-app-test
         directory: ./  # Directory containing the code you want to push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TOKEN: ${{ secrets.TOKEN }}
 
