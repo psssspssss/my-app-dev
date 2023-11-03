@@ -18,7 +18,7 @@ jobs:
 
     - name: Push to Test
       run: |
-        git clone git@github.com:Techtidy/my-app-test.git
+        git Techtidy/my-app-test
         cd my-app-test
         git checkout main  # Change to the branch you want to deploy to in the "Test" repository
         cp -r ../${{ github.workspace }}/* .
