@@ -15,7 +15,7 @@ jobs:
 
       - name: Clone Test Repository
         run: |
-          git clone https://github.com/Techtidy/my-app-test.git
+          git clone https://github.com/Techtidy/my-appp-test.git
           cd my-app-test
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
