@@ -1,27 +1,33 @@
-name: Deploy from Dev to Test
+name: Push to Target Repo
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to the branch you want to trigger the workflow on
 
 jobs:
-  deploy:
+  push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code from Dev
+    - name: Check Out Source Repository
       uses: actions/checkout@v2
-      with:
-        repository: Techtidy/my-app-dev
-        ref: main  # Change to the branch you want to deploy from
 
-    - name: Push to Test
+    - name: Configure Git
       run: |
-        git Techtidy/my-app-test
-        cd my-app-test
-        git checkout main  # Change to the branch you want to deploy to in the "Test" repository
-        cp -r ../${{ github.workspace }}/* .
+        git config --global user.email "eng21ct0007@dsu.edu.in"
+        git config --global user.name "hrk-2109"
+    
+    - name: Push to Target Repo
+      run: |
+        git clone https://github.com/Techtidy/my-app-test.git
+        cd target-repo
+        git checkout main  
+        cp -r ../path/to/files/* . 
         git add .
-        git commit -m "Automated push from Dev to Test"
+        git commit -m "Automated push from source repository"
         git push
+        cd ..
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
