@@ -34,4 +34,4 @@ jobs:
           git push origin main
         working-directory: ./my-app-test
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
