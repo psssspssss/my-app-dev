@@ -18,8 +18,8 @@ jobs:
     
     - name: Push to Target Repo
       run: |
-        git clone https://github.com/hrk-2109/e-waste_locator.git
-        cd e-waste_locator
+        git clone https://github.com/Techtidy/my-app-dev.git 
+        cd https://github.com/Techtidy/my-app-test
         git checkout main  
         cp -r ../path/to/files/* . 
         git add .
