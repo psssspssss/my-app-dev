@@ -15,8 +15,8 @@ jobs:
 
       - name: Create PR
         run: |
-          git config --global user.email "eng21ct0007@dsu.edu.in"
-          git config --global user.name "hrk-2109"
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your GitHub Username"
           git checkout -b feature-branch  # Create a new branch for your changes
           # Make your changes here
           git add .
@@ -25,3 +25,36 @@ jobs:
           hub pull-request -m "Propose a new feature"  # If you have the 'hub' command installed
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+name: Push to Target Repo
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the workflow on
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Out Source Repository
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "eng21ct0007@dsu.edu.in"
+        git config --global user.name "hrk-2109"
+    
+    - name: Push to Target Repo
+      run: |
+        git clone https://github.com/hrk-2109/e-waste_locator.git
+        cd e-waste_locator
+        git checkout main  
+        cp -r ../path/to/files/* . 
+        git add .
+        git commit -m "Automated push from source repository"
+        git push
+        cd ..
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
