@@ -1,3 +1,5 @@
+name: Push to Dev and Test Repos
+
 on:
   push:
     branches:
@@ -15,17 +17,23 @@ jobs:
       run: |
         git config --global user.email "eng21ct0007@dsu.edu.in"
         git config --global user.name "hrk-2109"
-    
-    - name: Push to Target Repo
-      run: |
-        git clone https://github.com/Techtidy/my-app-dev.git 
-        cd https://github.com/Techtidy/my-app-test
-        git checkout main  
-        cp -r ../path/to/files/* . 
-        git add .
-        git commit -m "Automated push from source repository"
-        git push
-        cd ..
 
-    env:
-      GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    - name: Push to Dev Repo
+      run: |
+        git remote add upstream https://github.com/Techtidy/my-app-dev.git
+        git fetch upstream
+        git checkout main
+        git merge upstream/main --no-edit
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+    - name: Push to Test Repo
+      run: |
+        git remote add upstream https://github.com/Techtidy/my-app-test.git
+        git fetch upstream
+        git checkout main
+        git merge upstream/main --no-edit
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
