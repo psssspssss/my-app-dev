@@ -1,32 +1,3 @@
-name: Push to Dev Repo
-
-on:
-  push:
-    branches:
-      - main  # Replace with your source branch
-
-jobs:
-  create_pr:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check Out Source Repository
-        uses: actions/checkout@v2
-
-      - name: Create PR
-        run: |
-          git config --global user.email "your-email@example.com"
-          git config --global user.name "Your GitHub Username"
-          git checkout -b feature-branch  # Create a new branch for your changes
-          # Make your changes here
-          git add .
-          git commit -m "Add new feature"
-          git push --set-upstream origin feature-branch
-          hub pull-request -m "Propose a new feature"  # If you have the 'hub' command installed
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-name: Push to Target Repo
-
 on:
   push:
     branches:
