@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
   copy-all-files:
     runs-on: ubuntu-latest
@@ -12,13 +12,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Copy All Files to Another Repository
+      - name: Push All Files to Another Repository
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: '.'
+          source_file: '.'  
           destination_repo: 'Techtidy/my-appp-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
-          commit_message: 'Copy all files'
+          commit_message: 'Push all files'
