@@ -62,10 +62,8 @@ resource "aws_route_table" "RT" {
 resource "aws_route_table_association" "rta1" {
   subnet_id      = aws_subnet.sub1.id
   route_table_id = aws_route_table.RT.id
-  tags = {
-    Name = "test_dev_route_table_association"
-  }
 }
+
 
 resource "aws_security_group" "webSg" {
   name   = "web"
