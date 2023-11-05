@@ -15,7 +15,7 @@ variable "key_name" {
 
 resource "aws_key_pair" "hello" {
   key_name   = var.key_name
-  public_key = file("path/to/your/public_key.pub") # Replace with the path to your public key file
+  public_key = file("C:\Users\vinod/.ssh/id_rsa") # Replace with the path to your public key file
 }
 
 
