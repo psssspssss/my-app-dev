@@ -12,7 +12,7 @@ jobs:
     - name: Pushes files from 'fold' directory
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
-        API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
+        API_TOKEN_GITHUB: ${{secrets.PUSH_TOKEN }}
       with:
         source_file: '.'
         destination_repo: 'Techtidy/my-appp-test'
