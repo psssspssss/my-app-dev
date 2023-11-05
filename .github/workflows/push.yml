@@ -1,0 +1,21 @@
+name: Push File
+
+on: push
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes files from 'fold' directory
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{secrets.GTOKEN }}
+      with:
+        source_file: '.'
+        destination_repo: 'Techtidy/my-appp-test'
+        user_email: 'eng21ct0007@dsu.edu.in'
+        user_name: 'hrk-2109'
+        commit_message: 'success!'
