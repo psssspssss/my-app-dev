@@ -24,6 +24,9 @@ resource "tls_private_key" "rsa" {
 
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
+  tags = {
+    Name = "test_dev_vpc"
+  }
 }
 
 resource "aws_subnet" "sub1" {
@@ -31,10 +34,16 @@ resource "aws_subnet" "sub1" {
   cidr_block              = "10.0.0.0/24"
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
+  tags = {
+    Name = "test_dev_subnet"
+  }
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myvpc.id
+  tags = {
+    Name = "test_dev_igw"
+  }
 }
 
 resource "aws_route_table" "RT" {
@@ -44,11 +53,18 @@ resource "aws_route_table" "RT" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
+
+  tags = {
+    Name = "test_dev_route_table"
+  }
 }
 
 resource "aws_route_table_association" "rta1" {
   subnet_id      = aws_subnet.sub1.id
   route_table_id = aws_route_table.RT.id
+  tags = {
+    Name = "test_dev_route_table_association"
+  }
 }
 
 resource "aws_security_group" "webSg" {
@@ -79,7 +95,7 @@ resource "aws_security_group" "webSg" {
   }
 
   tags = {
-    Name = "Web-sg"
+    Name = "test_dev_web_sg"
   }
 }
 
@@ -89,4 +105,7 @@ resource "aws_instance" "server" {
   key_name               = aws_key_pair.TF_key.key_name
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id              = aws_subnet.sub1.id
+  tags = {
+    Name = "test_dev_instance"
+  }
 }
