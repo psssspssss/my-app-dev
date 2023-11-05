@@ -13,7 +13,7 @@ variable "key_name" {
   default     = "hello" # Replace with your default key name or provide it during runtime
 }
 
-resource "aws_key_pair" "hello" {
+resource "aws_key_pair" "Dev" {
   key_name   = var.key_name
   public_key = file("C:\Users\vinod/.ssh/id_rsa") # Replace with the path to your public key file
 }
