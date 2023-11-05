@@ -9,7 +9,17 @@ variable "cidr" {
 
 resource "aws_key_pair" "TF_key" {
   key_name   = "TF_key"  # Replace with your desired key name
-  public_key = file("~/.ssh/id_rsa.pub")  # Replace with the path to your public key file
+  public_key = tls_private_key.rsa.public_key_openssh # Replace with the path to your public key file
+}
+
+resource "local_file" "TF_key_file" {
+  filename = "${path.module}/TF_key"
+  content  = aws_key_pair.TF_key.public_key
+}
+
+resource "tls_private_key" "rsa" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 resource "aws_vpc" "myvpc" {
@@ -52,6 +62,7 @@ resource "aws_security_group" "webSg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   ingress {
     description = "SSH"
     from_port   = 22
@@ -75,9 +86,7 @@ resource "aws_security_group" "webSg" {
 resource "aws_instance" "server" {
   ami                    = "ami-05c13eab67c5d8861"
   instance_type          = "t2.micro"
-  key_name      = aws_key_pair.TF_key.key_name
+  key_name               = aws_key_pair.TF_key.key_name
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id              = aws_subnet.sub1.id
-
-  
 }
