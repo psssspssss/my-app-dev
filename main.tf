@@ -10,7 +10,7 @@ variable "cidr" {
 variable "key_name" {
   description = "Name of the AWS key pair"
   type        = string
-  default     = "hello" # Replace with your default key name or provide it during runtime
+  default     = "Dev" # Replace with your default key name or provide it during runtime
 }
 
 resource "aws_key_pair" "Dev" {
@@ -97,7 +97,7 @@ resource "aws_security_group" "webSg" {
 resource "aws_instance" "server" {
   ami                    = "ami-05c13eab67c5d8861"
   instance_type          = "t2.micro"
-  key_name               = aws_key_pair.hello.key_name
+  key_name               = aws_key_pair.Dev.key_name
   vpc_security_group_ids = [aws_security_group.webSg.id]
   subnet_id              = aws_subnet.sub1.id
   tags = {
