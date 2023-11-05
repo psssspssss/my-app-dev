@@ -1,21 +1,24 @@
 name: Push File
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   copy-file:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Pushes files from 'fold' directory
-      uses: dmnemec/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
-      with:
-        source_file: '.'
-        destination_repo: 'Techtidy/my-appp-test'
-        user_email: 'eng21ct0007@dsu.edu.in'
-        user_name: 'hrk-2109'
-        commit_message: 'success!'
+      - name: Push Files to Another Repository
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'file.txt'  # Replace with the specific file(s) you want to copy
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+          commit_message: 'Push file.txt'
