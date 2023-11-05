@@ -7,11 +7,16 @@ variable "cidr" {
   default = "10.0.0.0/16"
 }
 
-resource "aws_key_pair" "hello" {
-  key_name   = "hello"  # Replace with your desired key name
-  #public_key = file("~/.ssh/id_rsa.pub") # Replace with the path to your public key file
+variable "key_name" {
+  description = "Name of the AWS key pair"
+  type        = string
+  default     = "hello" # Replace with your default key name or provide it during runtime
 }
 
+resource "aws_key_pair" "hello" {
+  key_name   = var.key_name
+  public_key = file("path/to/your/public_key.pub") # Replace with the path to your public key file
+}
 
 
 resource "aws_vpc" "myvpc" {
