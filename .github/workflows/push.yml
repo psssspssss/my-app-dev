@@ -1,24 +1,24 @@
-name: Push File
+name: Push All Files
 
 on:
   push:
     branches:
       - main
-      
+
 jobs:
-  copy-file:
+  copy-all-files:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Push Files to Another Repository
+      - name: Copy All Files to Another Repository
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: '*'  # Replace with the specific file(s) you want to copy
+          source_file: '.'
           destination_repo: 'Techtidy/my-appp-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
-          commit_message: 'Push file.txt'
+          commit_message: 'Copy all files'
