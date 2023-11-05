@@ -17,7 +17,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: '.'  
+          source_file: './'  
           destination_repo: 'Techtidy/my-appp-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
