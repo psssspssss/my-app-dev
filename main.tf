@@ -57,7 +57,7 @@ resource "aws_instance" "my_ec2" {
               yum -y install httpd
               service httpd start
               yum -y install git
-              git clone https://github.com/Techtidy/my-app-test.git /var/www/html
+              git clone https://github.com/Techtidy/my-appp-test.git /var/www/html
               chmod -R 755 /var/www/html
               service httpd restart
               EOF
