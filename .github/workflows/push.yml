@@ -18,8 +18,6 @@ jobs:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
           source_file: |
-            'TechTidy/'
-            '.DS_Store'
             'Jenkinsfile'
             'README.md'
             'SECURITY.md'
