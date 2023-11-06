@@ -3,16 +3,15 @@ provider "aws" {
   region = "us-east-1"  # Change to your desired region
 }
 
-# Modify this to use your existing VPC ID
+# Specify your existing VPC ID
 variable "existing_vpc_id" {
-  description = "ID of the existing VPC you want to use."
-  default = "vpc-08d04c9a4a6db7601"
+  default = "vpc-08d04c9a4a6db7601"  # Replace with your VPC ID
 }
 
 # Create a subnet within the existing VPC
 resource "aws_subnet" "my_subnet" {
   vpc_id            = var.existing_vpc_id
-  cidr_block        = "10.0.0.0/24"
+  cidr_block        = "10.0.1.0/24"  # Replace with your desired CIDR block
   availability_zone = "us-east-1a"
 }
 
@@ -52,7 +51,7 @@ resource "aws_instance" "my_ec2" {
   key_name      = "hello"             # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
-   user_data = <<-EOF
+  user_data = <<-EOF
               #!/bin/bash
               yum -y update
               yum -y install httpd
