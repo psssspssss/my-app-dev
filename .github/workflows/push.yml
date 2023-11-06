@@ -37,7 +37,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: 'security.md'
+          source_file: 'SECURITY.md'
           destination_repo: 'Techtidy/my-app-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
