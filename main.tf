@@ -4,7 +4,7 @@
 
 # Create a VPC
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"
+  id = "vpc-08d04c9a4a6db7601"
 }
 
 # Create a subnet within the VPC
