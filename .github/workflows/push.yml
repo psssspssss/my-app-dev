@@ -17,12 +17,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: |
-            'Jenkinsfile'
-            'README.md'
-            'SECURITY.md'
-            'TechTidy Landing page.html'
-            'main.tf'
+          source_file: 'README.md'
           destination_repo: 'Techtidy/my-app-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
