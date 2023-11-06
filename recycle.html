@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Techcrafters</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+   
+<!-- header section start  -->
+
+<header class="header">
+
+   <a href="#" class="logo">Tech<span>tidy</span></a>
+
+   <nav class="navbar">
+      <a href="home.html">Home </a>
+      <a href="recycle.html"><b>Recycle </b></a>
+      <a href="resources.html">Educational Resources </a>
+      <a href="profile.html">Profile</a>
+    </nav>
+    
+
+   <div class="icons">
+      <div id="menu-btn" class="fas fa-bars"></div>
+      <div id="search-btn" class="fas fa-search"></div>
+   </div>
+
+   <form action="" class="search-form">
+      <input type="search" name="" placeholder="search here..." id="search-box">
+      <label for="search-box" class="fas fa-search"></label>
+   </form>
+
+   
+
+</header>
+
+
+
+<section class="contact" id="contact">
+   <center><h1 class="heading"><div>Your device has been
+      identified successfully </div> </h1></center>
+   <center><h1 class="now">      Find your nearest E-waste facility </h1></center>
+   <center><form action="" class="searchbar">
+      <input type="text" id="pincode" placeholder="Enter area pincode" name="device" pattern="[0-9]{6}" title="Please enter a 6-digit number">
+<button type="button" onclick="searchOnGoogleMaps()">Search</button>
+
+      </center>
+   
+</section>
+
+<section class="contact" id="contact">
+
+   <div class="row">
+
+    <iframe class="map" id="location-map" src="https://maps.google.com/maps?q=ewaste%20facilities%20in%20banglore&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" allowfullscreen="" loading="lazy"></iframe>
+
+</section> 
+ 
+<section class="contact" id="contact">
+
+   <div class="row">
+
+         <div class="content1">
+            <h1>You will be awarded 150 points for proper disposal of this device Your device contains about 4 gms of proecious metals</h1>
+            <h1><a href="profile.html">Get Points!</a></h1>
+         </div>
+   </div>
+   
+</section>
+
+<section class="about" id="about">
+
+   <h1 class="heading"><center><b>How to prepare your ewaste for recycling</b></center></h1>
+   <h1></h1>
+
+   <div class="row">
+
+      <div class="content">
+         <h1>It is as easy as <span style="color: red;"><em>ABC!</em></span></h1><br>
+         <h3><span style="color: red;">A</span>SK</h3>
+         <p>Does your old electrical items contain batteries or bulbs that are removable> Remove these before recycling. Delete any personal data from smart devices, and take out memory and SIM cards.</p>
+         <h3><span style="color: red;">B</span>AG</h3>
+         <p>Find abag that you can use to store all your old electricals until you can go to the recycling center - or until collection day. If you have one.</p>
+         <h3><span style="color: red;">C</span>HECK</h3>
+         <p>Check our easy recycling locator to find you local repair, reuse or recycling points</p>
+      
+      </div>
+
+   </div>
+</section>
+
+
+<section class="footer">
+
+   <div class="links">
+      <a class="btn" href="home.html">home</a>
+      <a class="btn" href="recycle.html">recycle</a>
+      <a class="btn" href="resources.html">Educational Resources</a>
+      <a class="btn" href="login.html">contact</a>
+   </div>
+
+   <div class="credit"> created by <span>TechCrafters</span> | all rights reserved! </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+<script>
+
+lightGallery(document.querySelector('.projects .box-container'));
+
+</script>
+
+</body>
+</html>
