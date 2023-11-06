@@ -4,8 +4,22 @@ on:
   push:
     branches:
       - main
-      
+       
 jobs:
+  bandit_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Git identity
+        run: |
+          git config --global user.email "eng21ct0007@dsu.edu.in"
+          git config --global user.name "hrk-2109"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Bandit
+        run: |
+          pip install bandit
+          bandit -r .
   copy-all-files:
     runs-on: ubuntu-latest
     steps:
