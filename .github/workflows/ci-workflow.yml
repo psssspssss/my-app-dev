@@ -44,5 +44,5 @@ jobs:
         run: docker pull owasp/zap2docker-weekly
       - name: Run ZAP API Scan
         run: |
-          sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py -t openapi.json -f openapi -c api-scan.conf 2> /dev/null; (($? == 2)) && echo 'Done' >&2 
+          sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py 2> /dev/null; (($? == 2)) && echo 'Done' >&2 -t openapi.json -f openapi -c api-scan.conf 
         # run: sudo docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py -t dev-wiki-api.json -f openapi -r test_report_$(date -u +'%Y%m%d').html
