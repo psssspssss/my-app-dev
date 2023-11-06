@@ -1,6 +1,6 @@
 # Define the provider and region
 provider "aws" {
-  region = "us-east-1"  
+  region = "us-east-1"
 }
 
 # Create a VPC
@@ -12,7 +12,7 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "my_subnet" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1b"  
+  availability_zone = "us-east-1b"
 }
 
 # Create a security group for the EC2 instance
@@ -35,12 +35,12 @@ resource "aws_security_group" "my_security_group" {
   }
 }
 
-# Launch an EC2 instance
+# Launch an EC2 instance with provisioner "remote-exec"
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-0fc5d935ebf8bc3bc" 
-  instance_type = "t2.micro"              
+  ami           = "ami-0fc5d935ebf8bc3bc"
+  instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_subnet.id
-  key_name      = "hello"             # Replace with your SSH key pair
+  key_name      = "hello" # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
   user_data = <<-EOF
@@ -53,18 +53,12 @@ resource "aws_instance" "my_ec2" {
               chmod -R 755 /var/www/html
               service httpd restart
               EOF
-}
 
-provisioner "remote-exec" {
-  inline = [
-    "chmod -R 755 /var/www/html",
-    "service httpd restart"
-  ]
-
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"  
-    host = self.public_ip  
+  provisioner "remote-exec" {
+    inline = [
+      "sudo chmod -R 755 /var/www/html",
+      "sudo service httpd restart"
+    ]
   }
 }
 
