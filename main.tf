@@ -37,7 +37,7 @@ resource "aws_security_group" "my_security_group" {
 
 # Launch an EC2 instance with provisioner "remote-exec"
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-0fc5d935ebf8bc3bc"
+  ami           = "ami-05c13eab67c5d8861"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_subnet.id
   key_name      = "hello" # Replace with your SSH key pair
@@ -53,16 +53,9 @@ resource "aws_instance" "my_ec2" {
               chmod -R 755 /var/www/html
               service httpd restart
               EOF
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod -R 755 /var/www/html",
-      "sudo service httpd restart"
-    ]
-  }
 }
 
-# Output the public IP of the EC2 instance (optional)
+
 output "public_ip" {
   value = aws_instance.my_ec2.public_ip
 }
