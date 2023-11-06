@@ -3,29 +3,14 @@ provider "aws" {
   region = "us-east-1"  # Change to your desired region
 }
 
-# Create a VPC
-resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"
+# Reference the existing VPC by ID
+data "aws_vpc" "existing_vpc" {
+  id = "vpc-08d04c9a4a6db7601"  # Replace with your VPC ID
 }
 
-# Create an internet gateway
-resource "aws_internet_gateway" "my_igw" {
-  vpc_id = aws_vpc.my_vpc.id
-}
-
-# Create a routing table
-resource "aws_route_table" "my_route_table" {
-  vpc_id = aws_vpc.my_vpc.id
-}
-
-# Create a subnet within the VPC
-resource "aws_subnet" "my_subnet" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1a"
-
-  # Associate the subnet with the routing table
-  route_table_id = aws_route_table.my_route_table.id
+# Reference the existing subnet by ID
+data "aws_subnet" "existing_subnet" {
+  id = "subnet-0123456789abcdef0"  # Replace with your subnet ID
 }
 
 # Create a security group for the EC2 instance
@@ -56,18 +41,11 @@ resource "aws_security_group" "my_security_group" {
   }
 }
 
-# Create a route in the routing table to the internet via the internet gateway
-resource "aws_route" "internet_access" {
-  route_table_id = aws_route_table.my_route_table.id
-  destination_cidr_block = "0.0.0.0/0"  # Route all traffic
-  gateway_id = aws_internet_gateway.my_igw.id
-}
-
-# Launch an EC2 instance
+# Launch an EC2 instance in the existing subnet
 resource "aws_instance" "my_ec2" {
   ami           = "ami-0fc5d935ebf8bc3bc"  # Replace with your desired AMI ID
   instance_type = "t2.micro"               # Replace with your desired instance type
-  subnet_id     = aws_subnet.my_subnet.id
+  subnet_id     = data.aws_subnet.existing_subnet.id
   key_name      = "hello"             # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
