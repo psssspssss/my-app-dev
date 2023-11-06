@@ -20,8 +20,8 @@ jobs:
 
       - name: Configure AWS credentials
         run: |
-          echo "AWS_ACCESS_KEY_ID=AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
 
       - name: Terraform Init
         run: terraform init
@@ -30,7 +30,7 @@ jobs:
         run: terraform plan -var "ami=ami-05c13eab67c5d8861" -var "instance_type=t2.micro"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var "ami=ami-0fc5d935ebf8bc3bc" -var "instance_type=t2.micro"
+        run: terraform apply -auto-approve -var "ami=ami-05c13eab67c5d8861" -var "instance_type=t2.micro"
 
       - name: Cleanup
         run: rm -f tfplan
