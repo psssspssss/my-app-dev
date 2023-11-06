@@ -1,0 +1,6 @@
+-config replacer.full_list\\(0\\).description=Auth Header \
+-config replacer.full_list\\(0\\).enabled=true \
+-config replacer.full_list\\(0\\).matchtype=REQ_HEADER \
+-config replacer.full_list\\(1\\).matchstr=Authorization \
+-config replacer.full_list\\(1\\).regex=false \
+-config replacer.full_list\\(1\\).replacement="Basic {your_basic_auth_creds}"
