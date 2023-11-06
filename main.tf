@@ -1,6 +1,6 @@
 # Define the provider and region
 provider "aws" {
-  region = "us-east-1"  # Change to your desired region
+  region = "us-east-1"  
 }
 
 # Create a VPC
@@ -12,7 +12,7 @@ resource "aws_vpc" "my_vpc" {
 resource "aws_subnet" "my_subnet" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1b"  # Change to your desired availability zone
+  availability_zone = "us-east-1b"  
 }
 
 # Create a security group for the EC2 instance
@@ -37,8 +37,8 @@ resource "aws_security_group" "my_security_group" {
 
 # Launch an EC2 instance
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-0fc5d935ebf8bc3bc"  # Replace with your desired AMI ID
-  instance_type = "t2.micro"               # Replace with your desired instance type
+  ami           = "ami-05c13eab67c5d8861" 
+  instance_type = "t2.micro"              
   subnet_id     = aws_subnet.my_subnet.id
   key_name      = "hello"             # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
@@ -63,8 +63,8 @@ provisioner "remote-exec" {
 
   connection {
     type     = "ssh"
-    user     = "ec2-user"  # Update with the correct username for your AMI
-    host = self.public_ip  # This references the public IP of the EC2 instance
+    user     = "ec2-user"  
+    host = self.public_ip  
   }
 }
 
