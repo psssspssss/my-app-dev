@@ -1,6 +1,6 @@
 # Define the provider and region
 provider "aws" {
-   region = "us-east-1"  # Change to your desired region
+  region = "us-east-1"  # Change to your desired region
 }
 
 # Create a VPC
@@ -45,10 +45,10 @@ resource "aws_security_group" "my_security_group" {
 
 # Launch an EC2 instance
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-0123456789abcdef0"  # Replace with your desired AMI ID
+  ami           = "ami-0fc5d935ebf8bc3bc"  # Replace with your desired AMI ID
   instance_type = "t2.micro"               # Replace with your desired instance type
   subnet_id     = aws_subnet.my_subnet.id
-  key_name      = "my-keypair"             # Replace with your SSH key pair
+  key_name      = "hello"             # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
   user_data = <<-EOF
