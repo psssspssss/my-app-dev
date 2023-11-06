@@ -33,6 +33,8 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -External Services 
 
 -Web Server and Hosting
+
+
 ''' mermaid 
 
 flowchart TD
