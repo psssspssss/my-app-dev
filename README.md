@@ -36,23 +36,23 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 ''' mermaid 
 
 flowchart TD;
-    A[Start] -->B(User Registeration)
-    B --> G[Educational resources]
-    B --> L[Home]
-    L --> M[Scanning]
-    M --> N[E-waste locator]
-    N --> O[metal composition]
-    O --> P[Points]
-    P --> Q[end]
-    B --> I[Profile]
-    I --> R[Disposal history]
-    R --> S[Approval]
-    S --> T[Total points]
-    T --> U[Redeem points]
-    U-->Q[end]
-    G -->J[harmful effects]
-    J -->K[Environmental impacts]
-    K -->Q[end]
+    A[Start] -->B(User Registeration);
+    B --> G[Educational resources];
+    B --> L[Home];
+    L --> M[Scanning];
+    M --> N[E-waste locator];
+    N --> O[metal composition];
+    O --> P[Points];
+    P --> Q[end];
+    B --> I[Profile];
+    I --> R[Disposal history];
+    R --> S[Approval];
+    S --> T[Total points];
+    T --> U[Redeem points];
+    U-->Q[end];
+    G -->J[harmful effects];
+    J -->K[Environmental impacts];
+    K -->Q[end];
 '''
     
   
