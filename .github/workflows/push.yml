@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Push All Files to Another Repository
+      - name: README
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
@@ -21,4 +21,44 @@ jobs:
           destination_repo: 'Techtidy/my-app-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
-          commit_message: 'Push all files'
+
+      - name: readme
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'README.md'
+          destination_repo: 'Techtidy/my-app-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      - name: security
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'security.md'
+          destination_repo: 'Techtidy/my-app-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      - name: terraform
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'main.tf'
+          destination_repo: 'Techtidy/my-app-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      - name: jenkins
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'Jenkinsfile'
+          destination_repo: 'Techtidy/my-app-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+    
