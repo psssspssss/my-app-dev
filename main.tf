@@ -37,7 +37,7 @@ resource "aws_security_group" "my_security_group" {
 
 # Launch an EC2 instance
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-05c13eab67c5d8861" 
+  ami           = "ami-0fc5d935ebf8bc3bc" 
   instance_type = "t2.micro"              
   subnet_id     = aws_subnet.my_subnet.id
   key_name      = "hello"             # Replace with your SSH key pair
