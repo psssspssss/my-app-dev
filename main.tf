@@ -3,16 +3,17 @@ provider "aws" {
   region = "us-east-1"  # Change to your desired region
 }
 
-# Create a VPC
-resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"
+# Modify this to use your existing VPC ID
+variable "existing_vpc_id" {
+  description = "ID of the existing VPC you want to use."
+  default = "vpc-08d04c9a4a6db7601"
 }
 
-# Create a subnet within the VPC
+# Create a subnet within the existing VPC
 resource "aws_subnet" "my_subnet" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1a"  
+  vpc_id            = var.existing_vpc_id
+  cidr_block        = "10.0.0.0/24"
+  availability_zone = "us-east-1a"
 }
 
 # Create a security group for the EC2 instance
