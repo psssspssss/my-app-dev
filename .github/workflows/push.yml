@@ -17,8 +17,15 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
         with:
-          source_file: './'  
-          destination_repo: 'Techtidy/my-appp-test'
+          source_file: |
+            'TechTidy/'
+            '.DS_Store'
+            'Jenkinsfile'
+            'README.md'
+            'SECURITY.md'
+            'TechTidy Landing page.html'
+            'main.tf'
+          destination_repo: 'Techtidy/my-app-test'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
           commit_message: 'Push all files'
