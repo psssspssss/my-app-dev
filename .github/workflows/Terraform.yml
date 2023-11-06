@@ -27,10 +27,10 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -var "ami=ami-0123456789abcdef0" -var "instance_type=t2.micro"
+        run: terraform plan -var "ami=ami-0fc5d935ebf8bc3bc" -var "instance_type=t2.micro"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var "ami=ami-0123456789abcdef0" -var "instance_type=t2.micro"
+        run: terraform apply -auto-approve -var "ami=ami-0fc5d935ebf8bc3bc" -var "instance_type=t2.micro"
 
       - name: Cleanup
         run: rm -f tfplan
