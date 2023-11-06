@@ -51,13 +51,13 @@ resource "aws_instance" "my_ec2" {
   key_name      = "hello"             # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
-  user_data = <<-EOF
+   user_data = <<-EOF
               #!/bin/bash
               yum -y update
               yum -y install httpd
               service httpd start
               yum -y install git
-              git clone https://github.com/Techtidy/my-appp-test.git /var/www/html
+              git clone https://github.com/your/repo.git /var/www/html
               chmod -R 755 /var/www/html
               service httpd restart
               EOF
