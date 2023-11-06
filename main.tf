@@ -3,16 +3,29 @@ provider "aws" {
   region = "us-east-1"  # Change to your desired region
 }
 
-# Specify your existing VPC ID
-variable "existing_vpc_id" {
-  default = "vpc-08d04c9a4a6db7601"  # Replace with your VPC ID
+# Create a VPC
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
 }
 
-# Create a subnet within the existing VPC
+# Create an internet gateway
+resource "aws_internet_gateway" "my_igw" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+# Create a routing table
+resource "aws_route_table" "my_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+# Create a subnet within the VPC
 resource "aws_subnet" "my_subnet" {
-  vpc_id            = var.existing_vpc_id
-  cidr_block        = "10.0.1.0/24"  # Replace with your desired CIDR block
+  vpc_id     = aws_vpc.my_vpc.id
+  cidr_block = "10.0.0.0/24"
   availability_zone = "us-east-1a"
+
+  # Associate the subnet with the routing table
+  route_table_id = aws_route_table.my_route_table.id
 }
 
 # Create a security group for the EC2 instance
@@ -41,6 +54,13 @@ resource "aws_security_group" "my_security_group" {
     protocol    = "-1"  # Allow all protocols
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+# Create a route in the routing table to the internet via the internet gateway
+resource "aws_route" "internet_access" {
+  route_table_id = aws_route_table.my_route_table.id
+  destination_cidr_block = "0.0.0.0/0"  # Route all traffic
+  gateway_id = aws_internet_gateway.my_igw.id
 }
 
 # Launch an EC2 instance
