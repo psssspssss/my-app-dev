@@ -34,9 +34,8 @@ resource "aws_instance" "my_ec2" {
               yum -y update
               yum -y install httpd
               service httpd start
-              yum -y install wget
-              wget -P /var/www/html https://eng21ct0016.github.io/TechTidy/index.html
-              chmod -R 755 /var/www/html
+              echo "<html><head><title>Test Page</title></head><body><h1>It's running!</h1></body></html>" > /var/www/html/index.html
+              chmod 644 /var/www/html/index.html
               service httpd restart
               EOF
 }
