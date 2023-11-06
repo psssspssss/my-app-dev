@@ -35,7 +35,7 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -Web Server and Hosting
 
 
-''' mermaid 
+``` mermaid 
 
 flowchart TD
     A[Start] -->B(User Registeration);
@@ -56,8 +56,7 @@ flowchart TD
     J -->K[Environmental impacts];
     K -->Q[end];
     
-'''
-    
+```
   
     
   
