@@ -33,6 +33,26 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -External Services 
 
 -Web Server and Hosting
+flowchart TD
+    A[Start] -->B(User Registeration)
+    B --> G[Educational resources]
+    B --> L[Home]
+    L --> M[Scanning]
+    M --> N[E-waste locator]
+    N --> O[metal composition]
+    O --> P[Points]
+    P --> Q[end]
+    B --> I[Profile]
+    I --> R[Disposal history]
+    R --> S[Approval]
+    S --> T[Total points]
+    T --> U[Redeem points]
+    U-->Q[end]
+    G -->J[harmful effects]
+    J -->K[Environmental impacts]
+    K -->Q[end]
 
+    
+  
 ![Start  v User Opens App  v User RegistrationLogin ----- User Logged In    v  No    v  Display LoginRegister    v  User Registers    v  User Logs In    v  Yes    v  -------------------------    v v](https://github.com/Techtidy/my-app-dev/assets/131174948/68f05bb2-968d-4e8a-bdf8-982d2eebec22)
 
