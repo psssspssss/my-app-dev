@@ -35,7 +35,7 @@ Addressing the pressing issue of E-waste, our solution educates users on proper 
 -Web Server and Hosting
 ''' mermaid 
 
-flowchart TD;
+flowchart TD
     A[Start] -->B(User Registeration);
     B --> G[Educational resources];
     B --> L[Home];
