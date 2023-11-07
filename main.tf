@@ -22,22 +22,42 @@ resource "aws_security_group" "my_security_group" {
   }
 }
 
+# Create an internet gateway
+resource "aws_internet_gateway" "my_internet_gateway" {
+  tags = {
+    Name = "my-igw"
+  }
+}
+
 # Launch an EC2 instance with provisioner "remote-exec"
 resource "aws_instance" "my_ec2" {
-  ami           = ""
+  ami           = "ami-12345678"  # Replace with your desired AMI ID
   instance_type = "t2.micro"
-  key_name      = "" # Replace with your SSH key pair
+  key_name      = "your-key-pair-name"  # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum -y update
-              yum -y install httpd
-              service httpd start
-              echo "<html><head><title>Test Page</title></head><body><h1>It's running!</h1></body></html>" > /var/www/html/index.html
-              chmod 644 /var/www/html/index.html
-              service httpd restart
-              EOF
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"  # Replace with the appropriate user for your AMI
+    host        = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum -y update",
+      "sudo yum -y install httpd",
+      "sudo service httpd start",
+      "sudo echo '<html><head><title>Test Page</title></head><body><h1>It's running!</h1></body></html>' > /var/www/html/index.html",
+      "sudo chmod 644 /var/www/html/index.html",
+      "sudo service httpd restart",
+    ]
+  }
+}
+
+# Attach the internet gateway to the VPC
+resource "aws_vpc_attachment" "my_vpc_attachment" {
+  vpc_id             = aws_default_vpc.default.id
+  internet_gateway_id = aws_internet_gateway.my_internet_gateway.id
 }
 
 output "public_ip" {
