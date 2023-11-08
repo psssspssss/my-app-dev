@@ -31,9 +31,9 @@ resource "aws_internet_gateway" "my_internet_gateway" {
 
 # Launch an EC2 instance with provisioner "remote-exec"
 resource "aws_instance" "my_ec2" {
-  ami           = "ami-12345678"  # Replace with your desired AMI ID
+  ami           = "ami-05c13eab67c5d8861"  # Replace with your desired AMI ID
   instance_type = "t2.micro"
-  key_name      = "your-key-pair-name"  # Replace with your SSH key pair
+  key_name      = "hello"  # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
   connection {
