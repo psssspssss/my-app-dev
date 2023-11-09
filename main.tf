@@ -33,7 +33,7 @@ resource "aws_internet_gateway" "my_internet_gateway" {
 resource "aws_instance" "my_ec2" {
   ami           = "ami-0fc5d935ebf8bc3bc"  # Replace with your desired AMI ID
   instance_type = "t2.micro"
-  key_name      = "DEv"  # Replace with your SSH key pair
+  key_name      = "Dev"  # Replace with your SSH key pair
   security_groups = [aws_security_group.my_security_group.name]
 
   connection {
