@@ -1,0 +1,3 @@
+[submodule "TechTidy"]
+    path = TechTidy
+    url = https://github.com/example/TechTidy.git
