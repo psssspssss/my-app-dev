@@ -38,7 +38,7 @@ resource "aws_instance" "my_ec2" {
 
   connection {
     type        = "ssh"
-    user        = "ec2-user"  # Replace with the appropriate user for your AMI
+    user        = "ec2-user"  
     host        = self.public_ip
   }
 
