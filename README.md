@@ -91,6 +91,7 @@
     L --> N;
     Q[end] --> N;
     U[Redeem points] --> N;
+</details>
 
 ```
 
