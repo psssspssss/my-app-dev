@@ -24,7 +24,7 @@
 
 
   ```
-
+</details>
 
 <details>
   <summary>Proposed Methodology</summary>
