@@ -10,31 +10,7 @@
   <summary>Architecture</summary>
 
   Users interact with the app on their devices, which sends requests to a web application. The web app handles user accounts, points, and device identification, and can use external services like mapping. A web server serves the app, and a database stores user data, facility info, and content. External services help with translation and mapping. Physical e-waste facilities are part of the system too.
-```mermaid
-flowchart TD
-    A[Start] --> B(Initiate Process);
-    B --> C[Collect Data];
-    B --> D[Verify Information];
-    C --> E[Data Entry];
-    E --> F[Validate Data];
-    F -->|Valid| G[Proceed];
-    F -->|Invalid| H[Correct Data];
-    G --> I[Generate Report];
-    I --> J[Review Report];
-    J -->|Satisfactory| K[Complete Process];
-    J -->|Needs Revision| L[Revise Report];
-    L --> I;
 
-    B --> M[Inform User];
-    H --> M;
-
-    K --> N[End];
-    L --> N;
-    Q[end] --> N;
-    U[Redeem points] --> N;
-
-
-  ```
 </details>
 
 <details>
@@ -88,3 +64,4 @@ flowchart TD
       J -->K[Environmental impacts];
       K -->Q[end];
 ```
+</details>
