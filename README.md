@@ -71,26 +71,26 @@
 
   ```mermaid
  flowchart TD
-    A[Start] --> B(Initiate Process);
-    B --> C[Collect Data];
-    B --> D[Verify Information];
-    C --> E[Data Entry];
-    E --> F[Validate Data];
-    F -->|Valid| G[Proceed];
-    F -->|Invalid| H[Correct Data];
-    G --> I[Generate Report];
-    I --> J[Review Report];
-    J -->|Satisfactory| K[Complete Process];
-    J -->|Needs Revision| L[Revise Report];
-    L --> I;
+    A1[Start] --> B1(Initiate Process);
+    B1--> C1[Collect Data];
+    B1 --> D1[Verify Information];
+    C1 --> E1[Data Entry];
+    E1 --> F1[Validate Data];
+    F1 -->|Valid| G1[Proceed];
+    F1 -->|Inv1alid| H1[Correct Data];
+    G1 --> I1[Generate Report];
+    I1 --> J1[Review Report];
+    J1 -->|Satisfactory| K1[Complete Process];
+    J1 -->|Needs Revision| L1[Revise Report];
+    L1 --> I1;
 
-    B --> M[Inform User];
-    H --> M;
+    B1 --> M1[Inform User];
+    H1 --> M1;
 
-    K --> N[End];
-    L --> N;
-    Q[end] --> N;
-    U[Redeem points] --> N;
+    K1 --> N1[End];
+    L1 --> N1;
+    Q1[end] --> N1;
+    U1[Redeem points] --> N1;
 </details>
 
 ```
