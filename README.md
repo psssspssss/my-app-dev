@@ -10,6 +10,41 @@
   <summary>Architecture</summary>
 
   Users interact with the app on their devices, which sends requests to a web application. The web app handles user accounts, points, and device identification, and can use external services like mapping. A web server serves the app, and a database stores user data, facility info, and content. External services help with translation and mapping. Physical e-waste facilities are part of the system too.
+graph TD
+    subgraph UserDevice
+        A(User's Device)
+    end
+
+    subgraph WebApplication
+        B(Web Application)
+        C(Image Identification)
+        D(Nearby E-Waste Location Services)
+        E(Rewards Management)
+        F(External Services)
+    end
+
+    subgraph WebServerAndHosting
+        G(Web Server and Hosting)
+    end
+
+    subgraph Database
+        H(Database)
+    end
+
+    subgraph E-WasteFacility
+        I(Physical E-Waste Facilities)
+    end
+
+    A -->|Sends requests| B
+    B -->|Handles| C
+    B -->|Handles| D
+    B -->|Handles| E
+    B -->|Uses| F
+    B -->|Serves| G
+    B -->|Stores| H
+    B -->|Part of| I
+
+  
 </details>
 
 <details>
