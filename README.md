@@ -65,3 +65,33 @@
       K -->Q[end];
 ```
 </details>
+
+<details>
+  <summary>Architecture diagram</summary>
+
+  ```mermaid
+ flowchart TD
+    A[Start] --> B(Initiate Process);
+    B --> C[Collect Data];
+    B --> D[Verify Information];
+    C --> E[Data Entry];
+    E --> F[Validate Data];
+    F -->|Valid| G[Proceed];
+    F -->|Invalid| H[Correct Data];
+    G --> I[Generate Report];
+    I --> J[Review Report];
+    J -->|Satisfactory| K[Complete Process];
+    J -->|Needs Revision| L[Revise Report];
+    L --> I;
+
+    B --> M[Inform User];
+    H --> M;
+
+    K --> N[End];
+    L --> N;
+    Q[end] --> N;
+    U[Redeem points] --> N;
+
+```
+</details>
+
