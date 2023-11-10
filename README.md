@@ -93,5 +93,4 @@
     U[Redeem points] --> N;
 
 ```
-</details>
 
