@@ -66,32 +66,3 @@
 ```
 </details>
 
-<details>
-  <summary>Architecture diagram</summary>
-
-  ```mermaid
- flowchart TD
-    A1[Start] --> B1(Initiate Process);
-    B1--> C1[Collect Data];
-    B1 --> D1[Verify Information];
-    C1 --> E1[Data Entry];
-    E1 --> F1[Validate Data];
-    F1 -->|Valid| G1[Proceed];
-    F1 -->|Inv1alid| H1[Correct Data];
-    G1 --> I1[Generate Report];
-    I1 --> J1[Review Report];
-    J1 -->|Satisfactory| K1[Complete Process];
-    J1 -->|Needs Revision| L1[Revise Report];
-    L1 --> I1;
-
-    B1 --> M1[Inform User];
-    H1 --> M1;
-
-    K1 --> N1[End];
-    L1 --> N1;
-    Q1[end] --> N1;
-    U1[Redeem points] --> N1;
-</details>
-
-```
-
