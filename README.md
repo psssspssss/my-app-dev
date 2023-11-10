@@ -11,14 +11,16 @@
 
   Users interact with the app on their devices, which sends requests to a web application. The web app handles user accounts, points, and device identification, and can use external services like mapping. A web server serves the app, and a database stores user data, facility info, and content. External services help with translation and mapping. Physical e-waste facilities are part of the system too.
 ```mermaid
-    A -->|Sends requests| B
-    B -->|Handles| C
-    B -->|Handles| D
-    B -->|Handles| E
-    B -->|Uses| F
-    B -->|Serves| G
-    B -->|Stores| H
-    B -->|Part of| I
+  flowchart TD
+
+    A -->|Sends requests| B ;
+    B -->|Handles| C;
+    B -->|Handles| D;
+    B -->|Handles| E;
+    B -->|Uses| F;
+    B -->|Serves| G;
+    B -->|Stores| H;
+    B -->|Part of| I;
 
   ```
 </details>
