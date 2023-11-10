@@ -1,7 +1,6 @@
-FROM python:3.9
-WORKDIR /app/backend
-RUN pip inatall -r requirements.txt
-COPY . /app/backend
-EXPOSE 8000
-
-CMD python /app/backend/
+FROM node:18-alpine
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --production
+COPY . .
+CMD ["node", "src/index.js"]
