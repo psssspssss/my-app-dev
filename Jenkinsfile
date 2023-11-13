@@ -1,11 +1,17 @@
 pipeline {
-    agent any
-    
+    agent {
+        docker {
+            image 'node:14-alpine'
+        }
+    }
+
     stages {
         stage("Install Docker Compose") {
             steps {
                 script {
-                    sh "apk add docker-compose"
+                    sh "apk add --no-cache curl"
+                    sh "curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose"
+                    sh "chmod +x /usr/local/bin/docker-compose"
                 }
             }
         }
