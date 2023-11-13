@@ -1,12 +1,20 @@
-FROM python:3.9
+# Use an official Node.js runtime as a base image
+FROM node:14
 
-WORKDIR /app/backend
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-COPY requirements.txt /app/backend
-RUN pip install -r requirements.txt
+# Copy package.json and package-lock.json to the working directory
+COPY src/package*.json ./
 
-COPY . /app/backend
+# Install dependencies
+RUN npm install
 
-EXPOSE 8000
+# Copy the content of the local src directory to the working directory
+COPY src/ .
 
-CMD python /app/backend/manage.py runserver 0.0.0.0:8000
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "start"]
