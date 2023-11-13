@@ -3,6 +3,15 @@ pipeline{
     
     
     stages{
+
+        stage("Docker-compose install "){
+            steps{
+                script {
+                    sh "apk add docker-compose"
+                }
+            
+        }
+        
         stage("Code "){
             steps{
                 echo "Clone the code from git"
