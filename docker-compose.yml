@@ -1,6 +1,10 @@
-version : "3.3"
-services : 
-  web :
-    image : techtidy/techtidy:latest
-    ports :
-      - "8000:8000"
+version: '3'
+
+services:
+  web:
+    image: techtidy/techtidy:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/usr/src/app
+    command: npm start
