@@ -1,0 +1,11 @@
+{
+  "name": "my-app-dev-1-demo",
+  "version": "1.0.0",
+  "description": "Imagine a world where responsible e-waste disposal is not just a choice but a seamless and rewarding experience. Our project is your gateway to this reality. \r We've designed an innovative web app that identifies devices, locates e-waste centers, educates users, and rewards eco-conscious actions. \r Let's revolutionize e-waste management together.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
