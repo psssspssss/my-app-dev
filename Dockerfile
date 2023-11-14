@@ -1,14 +1,10 @@
-# Use an official lightweight web server image
-FROM nginx:alpine
+FROM python:3.9
 
-# Remove the default NGINX index file
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app/backend
 
-# Copy the content of the src directory to the NGINX web root
-COPY src/ /usr/share/nginx/html
+COPY requirements.txt /app/backend
+RUN pip install -r requirements.txt
 
-# Expose port 80 to the outside world
+COPY . /app/backend
+
 EXPOSE 8000
-
-# Command to start NGINX and keep the container running
-CMD ["nginx", "-g", "daemon off;"]
