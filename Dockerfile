@@ -1,19 +1,19 @@
-# Use an official Node.js runtime as a base image
-FROM node:14
+# Use an official lightweight Node.js image
+FROM node:14-alpine
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Set the working directory to /app
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY src/package.json ./
+COPY package*.json ./
 
-# Install dependencies
+# Install any dependencies
 RUN npm install
 
-# Copy the content of the local src directory to the working directory
+# Copy the content of the src directory to the working directory
 COPY src/ .
 
-# Expose the port the app runs on
+# Expose port 80 to the outside world
 EXPOSE 8000
 
 # Command to run the application
