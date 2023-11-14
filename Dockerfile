@@ -11,7 +11,7 @@ RUN apk add --no-cache wget
 RUN wget -O /usr/share/nginx/html/index.html https://eng21ct0016.github.io/TechTidy/index.html
 
 # Expose port 80 to the outside world
-EXPOSE 8000
+EXPOSE 80
 
 # Command to start NGINX and keep the container running
 CMD ["nginx", "-g", "daemon off;"]
