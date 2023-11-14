@@ -8,5 +8,4 @@ sqlparse==0.4.3
 tzdata==2022.7
 whitenoise==6.3.0
 
-# Non-Python dependencies (HTML, CSS, JS):
-External URL for reference: https://eng21ct0016.github.io/TechTidy/index.html
+
