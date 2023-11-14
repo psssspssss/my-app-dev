@@ -1,20 +1,14 @@
-# Use an official lightweight Node.js image
-FROM node:14-alpine
+# Use an official lightweight web server image
+FROM nginx:alpine
 
-# Set the working directory to /app
-WORKDIR /app
+# Remove the default NGINX index file
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copy package.json and package-lock.json to the working directory
-##//COPY package*.json ./
-
-# Install any dependencies
-RUN npm install
-
-# Copy the content of the src directory to the working directory
-COPY src/ .
+# Copy the content of the src directory to the NGINX web root
+COPY src/ /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 8000
 
-# Command to run the application
-CMD ["npm", "start"]
+# Command to start NGINX and keep the container running
+CMD ["nginx", "-g", "daemon off;"]
