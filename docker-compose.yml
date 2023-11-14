@@ -1,12 +1,6 @@
-version: '3'
-
-services:
-  web:
-    image: techtidy/techtidy:latest
-    ports:
-      - "8080:8000"
-    volumes:
-      - ./src:/usr/share/nginx/html
-
-# Command to start the containers and keep them running
-command: ["nginx", "-g", "daemon off;"]
+version : "3.3"
+services :
+  web :
+     image : techtidy/techtidy:latest
+     ports :
+         - "8000:8000"
