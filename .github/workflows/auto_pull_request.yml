@@ -8,15 +8,24 @@ on:
 jobs:
   create_pull_request:
     runs-on: ubuntu-latest
+    outputs:
+      pull_request_number: ${{ steps.create_pr.outputs.pull_request_number }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-add-repository https://cli.github.com/packages
+          sudo apt-get update
+          sudo apt-get install gh
+
       - name: Create Pull Request
+        id: create_pr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: ${{ github.event.ref }}
-          base: main
+          branch: main
           title: Automatic Pull Request
           labels: auto-pull-request
           body: "This is an automatic pull request."
@@ -26,6 +35,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for Approval
+        id: approval
         uses: wei/pull-request-wait-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge Pull Request
+        if: steps.approval.outputs.approved == 'true'
+        run: gh pr merge ${{ needs.create_pull_request.outputs.pull_request_number }} --merge
