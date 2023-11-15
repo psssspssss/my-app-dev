@@ -3,7 +3,7 @@ name: Auto Pull Request
 on:
   push:
     branches:
-      - main
+      - feature-branch
 
 jobs:
   create_pull_request:
@@ -25,7 +25,8 @@ jobs:
         id: create_pr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: main
+          base: main
+          head: feature-branch
           title: Automatic Pull Request
           labels: auto-pull-request
           body: "This is an automatic pull request."
