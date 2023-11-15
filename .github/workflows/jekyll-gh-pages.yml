@@ -37,9 +37,9 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
-          with:
-            name: jekyll-site
-            path: _site
+        with:
+          name: jekyll-site
+          path: _site
 
   # Deployment job for Jekyll site root
   deploy_jekyll_root:
