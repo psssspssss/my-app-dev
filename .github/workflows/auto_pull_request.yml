@@ -1,0 +1,22 @@
+name: Auto Pull Request
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: ${{ github.event.ref }}
+          base: dev
+          title: Automatic Pull Request
+          labels: auto-pull-request
+          body: "This is an automatic pull request."
