@@ -3,7 +3,7 @@ name: Auto Pull Request
 on:
   push:
     branches:
-      - '*'
+      - main
 
 jobs:
   create_pull_request:
@@ -16,7 +16,16 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: ${{ github.event.ref }}
-          base: dev
+          base: main
           title: Automatic Pull Request
           labels: auto-pull-request
           body: "This is an automatic pull request."
+
+  wait_for_approval:
+    needs: create_pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Approval
+        uses: wei/pull-request-wait-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
