@@ -56,7 +56,15 @@ jobs:
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
 
-     
+      - name: terraform
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'main.tf'
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
 
       - name: jenkins
         uses: dmnemec/copy_file_to_another_repo_action@main
@@ -68,4 +76,12 @@ jobs:
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
       
-    
+      - name: terraform
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'TechTidy website'
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
