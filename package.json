@@ -1,0 +1,19 @@
+{
+  "name": "my-app-dev",
+  "version": "1.0.0",
+  "description": "<details>\r   <summary>Introduction</summary>",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1"
+  }
+}
