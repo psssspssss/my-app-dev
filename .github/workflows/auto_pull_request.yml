@@ -3,7 +3,7 @@ name: Auto Pull Request
 on:
   push:
     branches:
-      - main
+      - feature-branch
 
 jobs:
   create_pull_request:
