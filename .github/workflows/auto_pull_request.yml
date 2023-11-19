@@ -32,8 +32,8 @@ jobs:
         with:
           token: ${{ secrets.TTOKEN }}
           branch: main
-          commit-message: "Update files"
-          title: "Update files"
-          body: "Automated update of files"
+          commit-message: "Automated update of files"
+          title: "Automated update of files"
+          body: "This pull request is automatically generated to update files."
           labels: "automated"
 
