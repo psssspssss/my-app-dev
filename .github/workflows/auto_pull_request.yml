@@ -1,41 +1,39 @@
-name: Auto Pull Request
+name: Push All Files
 
 on:
-  push:
+  pull_request:
     branches:
-      - feature-branch
-      
+      - main
 
 jobs:
-  create_pull_request:
+  bandit_scan:
     runs-on: ubuntu-latest
-    outputs:
-      pull_request_number: ${{ steps.create_pr.outputs.pull_request_number }}
     steps:
+      - name: Set Git identity
+        run: |
+          git config --global user.email "eng21ct0007@dsu.edu.in"
+          git config --global user.name "hrk-2109"
       - name: Checkout code
         uses: actions/checkout@v2
 
-     
+      - name: Install Bandit
+        run: |
+          pip install bandit
+          bandit -r .
 
-      - name: Create Pull Request
-        id: create_pr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: main
-          title: Automatic Pull Request
-          labels: auto-pull-request
-          body: "This is an automatic pull request."
-
-  wait_for_approval:
-    needs: create_pull_request
+  copy-all-files:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Approval
-        id: approval
-        uses: wei/pull-request-wait-action@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Merge Pull Request
-        if: steps.approval.outputs.approved == 'true'
-        run: gh pr merge ${{ needs.create_pull_request.outputs.pull_request_number }} --merge
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.TTOKEN }}
+          branch: main
+          commit-message: "Update files"
+          title: "Update files"
+          body: "Automated update of files"
+          labels: "automated"
+
