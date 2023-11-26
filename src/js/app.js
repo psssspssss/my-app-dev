@@ -38,17 +38,15 @@ window.onscroll = () => {
     contactInfo.classList.remove('active');
 }
 
-var homeswiper = new Swiper(".home-slider", {
+var homeSwiper = new Swiper(".home-slider", {
     loop: true,
     grabCursor: true,
     navigation: {
         nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev", // file deepcode ignore RedeclarationVars: <please specify a reason of ignoring this>
+        prevEl: ".swiper-button-prev",
     },
 });
-homeswiper.init();
-
-
+homeSwiper.init();
 
 document.getElementById("camera-btn").addEventListener("click", function () {
     window.location.href = "scan.html";
@@ -60,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmPasswordInput = document.getElementById("confirm-password");
     const successMessage = document.getElementById("success-message");
 
-    // deepcode ignore RedeclarationVars: <please specify a reason of ignoring this>
     registrationForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -70,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (password !== confirmPassword) {
             alert("Password and confirm password do not match.");
         } else {
-            // Passwords match, you can send the registration data to the server here
             successMessage.textContent = "Account created successfully!";
         }
     });
