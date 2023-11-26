@@ -23,16 +23,16 @@ jobs:
 
   zap_scan:
     runs-on: ubuntu-latest
-    name: Scan the webapplication
+    name: zap_scan
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.8.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.HTOKEN }}
           target: 'https://techtidy.github.io/my-app-dev/'
           cmd_options: '-a'
   copy-all-files:
