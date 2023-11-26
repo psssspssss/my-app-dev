@@ -30,7 +30,7 @@ jobs:
       - name: README
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'README.md'
           destination_repo: 'Techtidy/my-appp-test'
@@ -40,7 +40,7 @@ jobs:
       - name: src
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'src/'
           destination_repo: 'Techtidy/my-appp-test'
@@ -50,7 +50,7 @@ jobs:
       - name: security
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'security/'
           destination_repo: 'Techtidy/my-appp-test'
