@@ -7,19 +7,17 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended"
     ],
-    "overrides": [
-        {
-            "env": {
-                "node": true
-            },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
+    "overrides": [{
+        "env": {
+            "node": true
+        },
+        "files": [
+            ".eslintrc.{js,cjs}"
+        ],
+        "parserOptions": {
+            "sourceType": "script"
         }
-    ],
+    }],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
@@ -28,5 +26,14 @@ module.exports = {
         "react"
     ],
     "rules": {
+        'arrow-spacing': ['error', {
+            'before': true,
+            'after': true
+        }],
+        'no-unused-vars': ['error', {
+            'vars': 'all',
+            'args': 'none'
+        }],
+
     }
 }
