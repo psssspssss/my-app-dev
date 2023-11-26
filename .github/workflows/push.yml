@@ -20,8 +20,16 @@ jobs:
         run: |
           pip install bandit
           bandit -r .
+
+  zap_scan:
+     runs-on: ubuntu-latest
+     steps:
+       - name: ZAP Scan
+         uses: zaproxy/action-full-scan@v0.8.0
+         with:
+            target: 'https://techtidy.github.io/my-app-dev/'
   copy-all-files:
-    needs: bandit_scan
+    needs: [bandit_scan, zap_scan]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
