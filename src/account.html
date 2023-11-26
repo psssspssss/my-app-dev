@@ -96,12 +96,12 @@
         <p id="status-message"></p>
         <button id="go-back-button" style="display: none;" onclick="goToHome()">Go Back</button>
     </div>
-    
+ <!--   
     <script>
         function validateForm(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            // Retrieve input values.....
+            // Retrieve input values
             var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
@@ -123,5 +123,44 @@
             window.location.href = "home.html";
         }
     </script>
+-->
+
+<script>
+    function validateForm(event) {
+        try {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Retrieve input values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            // Check if any required field is empty
+            if (name === "" || email === "" || password === "" || confirmPassword === "") {
+                throw new Error("Error: All fields are required.");
+            }
+
+            // Check if the password and confirm password match
+            if (password !== confirmPassword) {
+                throw new Error("Error: Passwords do not match.");
+            }
+
+            // Assuming everything is valid, display a success message
+            document.getElementById("status-message").textContent = "Account created successfully!";
+            // Show the "Go Back" button
+            document.getElementById("go-back-button").style.display = "block";
+        } catch (error) {
+            console.error("Error:", error.message);
+            document.getElementById("status-message").textContent = error.message;
+        }
+    }
+
+    function goToHome() {
+        // Redirect to home.html....
+        window.location.href = "home.html";
+    }
+</script>
+
 </body>
 </html>

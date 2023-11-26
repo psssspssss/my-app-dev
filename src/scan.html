@@ -169,7 +169,7 @@
       </div>
     </div>
   </div>
-
+<!--
   <script>
     window.onload = function() {
       document.getElementById('dialog').style.display = 'block';
@@ -206,5 +206,95 @@
       }
     }
   </script>
+  -->
+
+  <script>
+    window.onload = function () {
+      try {
+        const dialogElement = document.getElementById('dialog');
+        if (!dialogElement) {
+          throw new Error('Dialog element not found.');
+        }
+        dialogElement.style.display = 'block';
+      } catch (error) {
+        console.error('Error setting up dialog:', error);
+      }
+    };
+  
+    function startCamera() {
+      const videoElement = document.getElementById('camera-feed');
+      if (!videoElement) {
+        console.error('Camera feed element not found.');
+        return;
+      }
+  
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error('Error accessing camera:', error);
+        });
+    }
+  
+    const cameraOption = document.getElementById('camera-option');
+    if (cameraOption) {
+      cameraOption.onclick = function () {
+        try {
+          const dialogElement = document.getElementById('dialog');
+          const cameraContainer = document.querySelector('.camera-container');
+          if (!dialogElement || !cameraContainer) {
+            throw new Error('Dialog or camera container element not found.');
+          }
+  
+          dialogElement.style.display = 'none';
+          cameraContainer.style.display = 'block';
+          startCamera();
+        } catch (error) {
+          console.error('Error switching to camera option:', error);
+        }
+      };
+    }
+  
+    const uploadOption = document.getElementById('upload-option');
+    if (uploadOption) {
+      uploadOption.onclick = function () {
+        try {
+          const dialogElement = document.getElementById('dialog');
+          const uploadContainer = document.querySelector('.upload-container');
+          if (!dialogElement || !uploadContainer) {
+            throw new Error('Dialog or upload container element not found.');
+          }
+  
+          dialogElement.style.display = 'none';
+          uploadContainer.style.display = 'block';
+        } catch (error) {
+          console.error('Error switching to upload option:', error);
+        }
+      };
+    }
+  
+    const scanButton = document.getElementById('scan-button');
+    if (scanButton) {
+      scanButton.onclick = function () {
+        try {
+          const fileInput = document.getElementById('image-upload');
+          if (!fileInput) {
+            throw new Error('Image upload element not found.');
+          }
+  
+          if (fileInput.files.length > 0) {
+            window.location.href = 'recycle.html';
+          } else {
+            alert('Please choose an image to scan.');
+          }
+        } catch (error) {
+          console.error('Error handling scan button click:', error);
+        }
+      };
+    }
+  </script>
+  
  </body>
 </html>

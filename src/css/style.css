@@ -8,7 +8,18 @@
   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
   --border:.1rem solid rgba(0,0,0,.3);
 }
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
 
+.close-button::before {
+    content: "\00D7";
+    font-size: 40px;
+    color: rgb(245, 11, 11)b0b;
+}
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
