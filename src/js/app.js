@@ -1,4 +1,4 @@
-//import Swiper from 'swiper';
+import Swiper from 'swiper';
 
 let navbar = document.querySelector('.header .navbar');
 let searchForm = document.querySelector('.header .search-form');
@@ -82,3 +82,6 @@ function searchOnGoogleMaps() {
     }
 }
 searchOnGoogleMaps.init();
+
+//npm install eslint-plugin-react@latest --save-dev
+//npx eslint "D:\vs folders\today\Src\js\app.js"
