@@ -76,6 +76,7 @@ var swiper = new Swiper(".blogs-slider", {
         },
     },
 });
+// file deepcode ignore RedeclarationVars: <please specify a reason of ignoring this>
 var swiper = new Swiper(".logo-slider", {
     loop: true,
     grabCursor: true,
