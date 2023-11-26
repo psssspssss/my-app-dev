@@ -22,12 +22,19 @@ jobs:
           bandit -r .
 
   zap_scan:
-     runs-on: ubuntu-latest
-     steps:
-       - name: ZAP Scan
-         uses: zaproxy/action-full-scan@v0.8.0
-         with:
-            target: 'https://techtidy.github.io/my-app-dev/'
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.8.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://techtidy.github.io/my-app-dev/'
+          cmd_options: '-a'
   copy-all-files:
     needs: [bandit_scan, zap_scan]
     runs-on: ubuntu-latest
