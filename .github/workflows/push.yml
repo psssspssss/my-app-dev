@@ -1,1 +1,60 @@
+name: Push All Files
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bandit_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Git identity
+        run: |
+          git config --global user.email "eng21ct0007@dsu.edu.in"
+          git config --global user.name "hrk-2109"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Bandit
+        run: |
+          pip install bandit
+          bandit -r .
+  copy-all-files:
+    needs: bandit_scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: README
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'README.md'
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      - name: src
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'src/'
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      - name: security
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+        with:
+          source_file: 'security/'
+          destination_repo: 'Techtidy/my-appp-test'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
+
+      
