@@ -1,0 +1,30 @@
+{
+  "name": "your-extension",
+  "version": "1.0.0",
+  "description": "Your Extension Description",
+  "main": "out/extension.js",  
+  "scripts": {
+    "compile": "tsc",  
+    "prepublishOnly": "npm run compile"  
+  },
+  "types": "out/extension.d.ts",  
+  "files": [
+    "out"
+  ],
+  "main": "out/extension.js",
+  "activationEvents": [
+    "onCommand:yourExtension.sayHello"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "yourExtension.sayHello",
+        "title": "Say Hello"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.0.0",  
+    "typescript": "^4.0.0"  
+  }
+}
