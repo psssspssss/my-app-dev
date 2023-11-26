@@ -24,6 +24,7 @@ jobs:
   zap_scan:
     runs-on: ubuntu-latest
     name: zap_scan
+    needs: bandit_scan
     steps:
       - name: Checkout
         uses: actions/checkout@v2
