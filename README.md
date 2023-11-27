@@ -1,3 +1,9 @@
+[![SAST Bandit](https://img.shields.io/badge/SAST-Bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![DAST: OWASP ZAP](https://img.shields.io/badge/DAST-OWASP_ZAP-orange.svg)](https://github.com/zaproxy/zaproxy)
+[![Functional Testing: Selenium](https://img.shields.io/badge/:Functional_Testing-Selenium-blue.svg)](https://github.com/SeleniumHQ/selenium)
+[![Dynamic Testing: Code_Coverage](https://img.shields.io/badge/:Dynamic_Testing-Code_Coverage-green.svg)](https://github.com/marketplace/codecov)
+[![IAC: Terraform](https://img.shields.io/badge/:IAC-Terraform-purple.svg)](https://github.com/hashicorp/terraform)
+
 # E-WASTE LOCATOR APP
 
 <details>
