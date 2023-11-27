@@ -74,9 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function searchOnGoogleMaps() {
     const pincode = document.getElementById('pincode').value;
+
     if (pincode.match(/^\d{6}$/)) {
-        const googleMapsUrl = `https://www.google.com/maps/search/e+waste+facilities+in+bangalore/@12.987587,77.600974,13z/data=!3m1!4b1!4m6!2m5!5m2!2ewaste!5sdevices!2s`
-        window.location.href = `${googleMapsUrl}${pincode}`;
+        const googleMapsUrl = `https://www.google.com/maps/search/e+waste+facilities+in+${pincode}`;
+        window.location.href = googleMapsUrl;
     } else {
         alert("Please enter a valid 6-digit pincode.");
     }
