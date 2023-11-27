@@ -20,8 +20,24 @@ jobs:
         run: |
           pip install bandit
           bandit -r .
-  copy-all-files:
+
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: zap_scan
     needs: bandit_scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.8.0
+        with:
+          token: ${{ secrets.HTOKEN }}
+          target: 'https://techtidy.github.io/my-app-dev/'
+          cmd_options: '-a'
+  copy-all-files:
+    needs: [bandit_scan, zap_scan]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +46,7 @@ jobs:
       - name: README
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'README.md'
           destination_repo: 'Techtidy/my-appp-test'
@@ -40,7 +56,7 @@ jobs:
       - name: src
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'src/'
           destination_repo: 'Techtidy/my-appp-test'
@@ -50,7 +66,7 @@ jobs:
       - name: security
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.TTOKEN }}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'security/'
           destination_repo: 'Techtidy/my-appp-test'
