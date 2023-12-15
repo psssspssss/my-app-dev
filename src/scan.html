@@ -169,44 +169,7 @@
       </div>
     </div>
   </div>
-<!--
-  <script>
-    window.onload = function() {
-      document.getElementById('dialog').style.display = 'block';
-    }
-    function startCamera() {
-      const videoElement = document.getElementById('camera-feed');
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          videoElement.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error('Error accessing camera:', error);
-        });
-    }
 
-    document.getElementById('camera-option').onclick = function() {
-      document.getElementById('dialog').style.display = 'none';
-      document.querySelector('.camera-container').style.display = 'block';
-      startCamera();
-    }
-
-    document.getElementById('upload-option').onclick = function() {
-      document.getElementById('dialog').style.display = 'none';
-      document.querySelector('.upload-container').style.display = 'block';
-    }
-
-    document.getElementById('scan-button').onclick = function() {
-      const fileInput = document.getElementById('image-upload');
-      if (fileInput.files.length > 0) {
-        window.location.href = 'recycle.html';
-      } else {
-        alert('Please choose an image to scan.');
-      }
-    }
-  </script>
-  -->
 
   <script>
     window.onload = function () {
