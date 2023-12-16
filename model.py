@@ -22,7 +22,7 @@ def setup():
 
     # Load training data from directory
     training_set = train_datagen.flow_from_directory(
-        "C:/Users/DELL/Downloads/e waste unzip/e waste/training",
+        "D:/vs folders/e waste/training",
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary'
@@ -33,7 +33,7 @@ def setup():
 
     # Load testing data from directory
     test_set = test_datagen.flow_from_directory(
-        "C:/Users/DELL/Downloads/e waste unzip/e waste/testing",
+        "D:/vs folders/e waste/testing",
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary'
