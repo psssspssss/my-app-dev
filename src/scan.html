@@ -162,14 +162,68 @@
         <button class="capture-button" onclick="window.location.href = 'recycle.html'">Capture</button>
       </div>
     </div>
-    <div class="upload-container" style="display: none;">
-      <input type="file" id="image-upload" accept="image/*">
-      <div class="capture-scan-buttons">
-        <button class="scan-button" id="scan-button">Scan Image</button>
-      </div>
-    </div>
-  </div>
+    <!--<div class="upload-container">
+      <input type="file" id="image-upload" accept="image/*" style="display: none;">
+      <button class="scan-button" id="scan-button">Scan Image</button>
+  </div>-->
+  
 
+
+  <div class="upload-container">
+    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+    <button class="choose-button" id="choose-button">Choose Image</button>
+    <img id="selected-image-preview" style="max-width: 100%; display: none;">
+    <span id="selected-image-name"></span>
+    <button class="submit-button" id="submit-button" style="display: none;">Submit</button>
+</div>
+
+<script>
+    var chooseButton = document.getElementById('choose-button');
+    var selectedImageNameSpan = document.getElementById('selected-image-name');
+    var selectedImagePreview = document.getElementById('selected-image-preview');
+    var submitButton = document.getElementById('submit-button');
+    var imageUpload = document.getElementById('image-upload');
+
+    chooseButton.addEventListener('click', function () {
+        imageUpload.click();
+    });
+
+    imageUpload.addEventListener('change', function () {
+        var inputFile = this.files[0];
+
+        if (inputFile) {
+            var imageName = inputFile.name;
+
+            selectedImageNameSpan.textContent = 'Selected Image: ' + imageName;
+            selectedImagePreview.src = URL.createObjectURL(inputFile);
+            selectedImagePreview.style.display = 'block';
+            submitButton.style.display = 'block';
+        } else {
+            selectedImageNameSpan.textContent = '';
+            selectedImagePreview.style.display = 'none';
+            submitButton.style.display = 'none';
+        }
+    });
+
+    submitButton.addEventListener('click', function () {
+        var inputFile = imageUpload.files[0];
+
+        if (inputFile) {
+            var imageName = inputFile.name;
+
+            if (imageName === 'laptop 10.jpg') {
+                window.location.href = 'recycle1.html';
+            } else if (imageName === '10.jpg') {
+                window.location.href = 'recycle.html';
+            } else {
+                alert('Image not recognized. No redirection performed.');
+            }
+        } else {
+            alert('Please select an image before submitting.');
+        }
+    });
+</script>
+  
 
   <script>
     window.onload = function () {
