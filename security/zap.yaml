@@ -1,0 +1,134 @@
+env:
+  contexts:
+  - excludePaths: []
+    name: baseline
+    urls:
+    - https://s4qr6oec41.execute-api.us-east-2.amazonaws.com/alpha/test
+    - https://s4qr6oec41.execute-api.us-east-2.amazonaws.com/
+  parameters:
+    failOnError: true
+    progressToStdout: false
+jobs:
+- install:
+  - pscanrulesBeta
+  type: addOns
+  uninstall: []
+- parameters:
+    enableTags: false
+    maxAlertsPerRule: 10
+  type: passiveScan-config
+- parameters:
+    maxDuration: 1
+    url: https://s4qr6oec41.execute-api.us-east-2.amazonaws.com/
+  type: spider
+- parameters:
+    maxDuration: 0
+  type: passiveScan-wait
+- parameters:
+    format: Long
+    summaryFile: /home/zap/zap_out.json
+  rules:
+  - action: WARN
+    customMessage: ''
+    id: 10003
+  - action: WARN
+    customMessage: ''
+    id: 10010
+  - action: WARN
+    customMessage: ''
+    id: 10011
+  - action: INFO
+    customMessage: ''
+    id: 10015
+  - action: WARN
+    customMessage: ''
+    id: 10017
+  - action: WARN
+    customMessage: ''
+    id: 10019
+  - action: WARN
+    customMessage: ''
+    id: 10020
+  - action: WARN
+    customMessage: ''
+    id: 10021
+  - action: WARN
+    customMessage: ''
+    id: 10023
+  - action: WARN
+    customMessage: ''
+    id: 10024
+  - action: WARN
+    customMessage: ''
+    id: 10025
+  - action: WARN
+    customMessage: ''
+    id: 10027
+  - action: WARN
+    customMessage: ''
+    id: 10032
+  - action: WARN
+    customMessage: ''
+    id: 10037
+  - action: WARN
+    customMessage: ''
+    id: 10040
+  - action: WARN
+    customMessage: ''
+    id: 10054
+  - action: WARN
+    customMessage: ''
+    id: 10055
+  - action: WARN
+    customMessage: ''
+    id: 10056
+  - action: WARN
+    customMessage: ''
+    id: 10057
+  - action: WARN
+    customMessage: ''
+    id: 10061
+  - action: WARN
+    customMessage: ''
+    id: 10096
+  - action: WARN
+    customMessage: ''
+    id: 10098
+  - action: WARN
+    customMessage: ''
+    id: 10105
+  - action: WARN
+    customMessage: ''
+    id: 10202
+  - action: WARN
+    customMessage: ''
+    id: 2
+  - action: WARN
+    customMessage: ''
+    id: 3
+  - action: WARN
+    customMessage: ''
+    id: 50001
+  - action: WARN
+    customMessage: ''
+    id: 90001
+  - action: WARN
+    customMessage: ''
+    id: 90011
+  - action: WARN
+    customMessage: ''
+    id: 90022
+  - action: WARN
+    customMessage: ''
+    id: 90030
+  - action: WARN
+    customMessage: ''
+    id: 90033
+  type: outputSummary
+- parameters:
+    reportDescription: ''
+    reportDir: /zap/wrk/
+    reportFile: api-passive-scan-report.html
+    reportTitle: ZAP Scanning Report
+    template: traditional-html
+  type: report
