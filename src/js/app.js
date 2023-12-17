@@ -89,3 +89,15 @@ searchOnGoogleMaps.init();
 
 //npm install --save -dev jest
 // npx jest "D:\vs folders\today\Src\js\app.js"
+
+function captureImage() {
+    var canvas = document.getElementById('canvas');
+    var video = document.getElementById('camera-feed');
+    var context = canvas.getContext('2d');
+
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    var imageDataUrl = canvas.toDataURL('image/jpeg');
+
+    // Now you can do whatever you want with the image data URL
+    console.log(imageDataUrl);
+}
