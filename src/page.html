@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 400px;
+        }
+
+        .login-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-header h2 {
+            margin: 0;
+        }
+
+        .login-form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Login</h2>
+        </div>
+        <div class="login-form">
+            <div class="form-group">
+                <label for="userType">Select User Type:</label>
+                <select id="userType">
+                    <option value="donator">Donator</option>
+                    <option value="recycler">Recycler</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            // You can add your login logic here
+            // For now, let's just display a message based on the selected user type
+            var userType = document.getElementById("userType").value;
+            alert("Logged in as " + userType);
+        }
+    </script>
+    <script>
+        function login() {
+            var userType = document.getElementById("userType").value;
+            alert("Logged in as " + userType);
+            
+            // Redirect to index.html
+            window.location.href = "index.html";
+        }
+    </script>
+    
+</body>
+</html>
