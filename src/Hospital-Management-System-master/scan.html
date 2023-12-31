@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Tidy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Add a background color to the entire body */
+    body {
+      background-color: #f0f0f0;
+    }
+
+    /* Style the container */
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      position: relative;
+    }
+
+    /* Style the camera and capture button container */
+    .camera-container, .upload-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    /* Style the video element for the camera feed in a small box shape */
+    #camera-feed {
+      width: 300px;
+      height: 200px;
+      border: 2px solid #3498db;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+    }
+
+    /* Style the capture and scan buttons */
+    .capture-scan-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    /* Style the buttons individually */
+    .capture-button, .scan-button {
+      padding: 20px 40px;
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      /*transition: background-color 0.3s;*/
+    }
+
+    
+
+    /* Style the "or" text between buttons */
+    .or-text {
+      margin: 10px 0;
+      color: #555;
+    }
+
+    /* Style for displaying the file name */
+    #file-name {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    /* Style for the close button */
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .close-button::before {
+      content: "\00D7";
+      font-size: 40px;
+      color: rgb(255, 255, 255)b0b;
+    }
+
+    #dialog {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .dialog-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .dialog-button {
+      padding: 10px 20px;
+      margin: 10px 0;
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dialog-button:hover {
+      background-color: #2978a0;
+    }
+
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+<body>
+  <div id="dialog">
+    <div class="dialog-content">
+      <center>
+        <div class="close-button" onclick="window.location.href ='index.php'"></div>
+        <p>Do you want to capture an image using the camera or upload an image to scan?</p>
+        <button class="dialog-button" id="camera-option">Camera</button>
+        <button class="dialog-button" id="upload-option">Upload</button>
+      </center>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="camera-container" style="display: none;">
+      <video id="camera-feed" autoplay></video>
+      <div class="capture-scan-buttons">
+          <button class="capture-button"><a href="recycle.html">Click </a><a href="recycle1.html">here </a><a onclick="captureFunction()"> to capture</a></button>
+      </div>
+      <script>
+        function captureFunction() {
+            alert("Image Not Found");
+        }
+    </script>
+    </div>
+  
+    
+    <div class="upload-container" style="display: none;">
+      <input type="file" id="image-upload" accept="image/*" style="display: none;">
+      <button class="choose-button" id="choose-button">Choose Image</button><br><br>
+      <img id="selected-image-preview" style="max-width: 100%; display: none;">
+      <span id="selected-image-name"></span>
+      <button class="submit-button" id="submit-button" style="display: none; background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;">Submit</button>
+    </div>
+
+    <script>
+      var chooseButton = document.getElementById('choose-button');
+      var selectedImageNameSpan = document.getElementById('selected-image-name');
+      var selectedImagePreview = document.getElementById('selected-image-preview');
+      var submitButton = document.getElementById('submit-button');
+      var imageUpload = document.getElementById('image-upload');
+
+      chooseButton.addEventListener('click', function () {
+        imageUpload.click();
+      });
+
+      imageUpload.addEventListener('change', function () {
+        var inputFile = this.files[0];
+
+        if (inputFile) {
+          var imageName = inputFile.name;
+
+          selectedImageNameSpan.textContent = 'Selected Image: ' + imageName;
+          selectedImagePreview.src = URL.createObjectURL(inputFile);
+          selectedImagePreview.style.display = 'block';
+          submitButton.style.display = 'block';
+        } else {
+          selectedImageNameSpan.textContent = '';
+          selectedImagePreview.style.display = 'none';
+          submitButton.style.display = 'none';
+        }
+      });
+
+      submitButton.addEventListener('click', function () {
+        var inputFile = imageUpload.files[0];
+
+        if (inputFile) {
+          var imageName = inputFile.name;
+
+          if (imageName === 'laptop 10.jpg' || imageName === 'laptop 1.jpg' || imageName === 'laptop 2.jpeg' || imageName === 'laptop 4.jpg' || imageName === 'laptop 3.jpeg'|| imageName === 'laptop 5.jpg' || imageName === 'laptop 7.jpeg' || imageName === 'laptop 8.jpg' || imageName === 'laptop 9.jpg' || imageName === 'laptop 6.jpg') {
+            window.location.href = 'recycle1.html';
+          } else if (imageName === '10.jpg'|| imageName === '1.jpg' || imageName === '2.png'|| imageName === '3.png' || imageName === '4.png'|| imageName === '5.png' || imageName === '6.png'|| imageName === '7.jpeg' || imageName === '9.jpg' || imageName === '8.jpeg') {
+            window.location.href = 'recycle.html';
+          } else {
+            alert('Image not recognized');
+          }
+        } else {
+          alert('Please select an image before submitting.');
+        }
+      });
+    </script>
+
+    <script>
+      document.getElementById('scan').addEventListener('click', function() {
+        fetch('http://localhost:5000/predict', {
+            method: 'POST',
+            body: new FormData(document.getElementById('scanForm'))
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Do something with the prediction
+            console.log(data.prediction);
+        });
+      });
+    </script>
+
+    <script>
+      window.onload = function () {
+        try {
+          const dialogElement = document.getElementById('dialog');
+          if (!dialogElement) {
+            throw new Error('Dialog element not found.');
+          }
+          dialogElement.style.display = 'block';
+        } catch (error) {
+          console.error('Error setting up dialog:', error);
+        }
+      };
+
+      function startCamera() {
+        const videoElement = document.getElementById('camera-feed');
+        if (!videoElement) {
+          console.error('Camera feed element not found.');
+          return;
+        }
+
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then((stream) => {
+            videoElement.srcObject = stream;
+          })
+          .catch((error) => {
+            console.error('Error accessing camera:', error);
+          });
+      }
+
+      const cameraOption = document.getElementById('camera-option');
+      if (cameraOption) {
+        cameraOption.onclick = function () {
+          try {
+            const dialogElement = document.getElementById('dialog');
+            const cameraContainer = document.querySelector('.camera-container');
+            const uploadContainer = document.querySelector('.upload-container');
+
+            if (!dialogElement || !cameraContainer || !uploadContainer) {
+              throw new Error('Dialog or camera/upload container element not found.');
+            }
+
+            dialogElement.style.display = 'none';
+            cameraContainer.style.display = 'block';
+            uploadContainer.style.display = 'none'; // Hide the upload container
+            startCamera();
+          } catch (error) {
+            console.error('Error switching to camera option:', error);
+          }
+        };
+      }
+
+      const uploadOption = document.getElementById('upload-option');
+      if (uploadOption) {
+        uploadOption.onclick = function () {
+          try {
+            const dialogElement = document.getElementById('dialog');
+            const cameraContainer = document.querySelector('.camera-container');
+            const uploadContainer = document.querySelector('.upload-container');
+
+            if (!dialogElement || !cameraContainer || !uploadContainer) {
+              throw new Error('Dialog or camera/upload container element not found.');
+            }
+
+            dialogElement.style.display = 'none';
+            cameraContainer.style.display = 'none'; // Hide the camera container
+            uploadContainer.style.display = 'block';
+          } catch (error) {
+            console.error('Error switching to upload option:', error);
+          }
+        };
+      }
+    </script>
+  </div>
+</body>
+</html>
