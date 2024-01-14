@@ -208,9 +208,6 @@ function get_specs(){
        <li class="nav-item">
         <a class="nav-link" href="#"></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="profile.html"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-    </li>
     </ul>
   </div>
 </nav>
