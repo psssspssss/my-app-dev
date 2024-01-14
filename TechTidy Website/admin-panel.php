@@ -81,16 +81,16 @@ function generate_bill(){
   $query=mysqli_query($con,"select p.pid,p.ID,p.fname,p.lname,p.doctor,p.appdate,p.apptime,p.disease,p.allergy,p.prescription,a.docFees from prestb p inner join appointmenttb a on p.ID=a.ID and p.pid = '$pid' and p.ID = '".$_GET['ID']."'");
   while($row = mysqli_fetch_array($query)){
     $output .= '
-    <label> Patient ID : </label>'.$row["pid"].'<br/><br/>
-    <label> Appointment ID : </label>'.$row["ID"].'<br/><br/>
-    <label> Patient Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
-    <label> Doctor Name : </label>'.$row["doctor"].'<br/><br/>
+    <label> Customer ID : </label>'.$row["pid"].'<br/><br/>
+    <label> Recycler ID : </label>'.$row["ID"].'<br/><br/>
+    <label> Customer Name : </label>'.$row["fname"].' '.$row["lname"].'<br/><br/>
+    <label> Recycled at : </label>'.$row["doctor"].'<br/><br/>
     <label> Appointment Date : </label>'.$row["appdate"].'<br/><br/>
     <label> Appointment Time : </label>'.$row["apptime"].'<br/><br/>
-    <label> Disease : </label>'.$row["disease"].'<br/><br/>
-    <label> Allergies : </label>'.$row["allergy"].'<br/><br/>
-    <label> Prescription : </label>'.$row["prescription"].'<br/><br/>
-    <label> Fees Paid : </label>'.$row["docFees"].'<br/>
+    <label> Device : </label>'.$row["disease"].'<br/><br/>
+    <label> Area : </label>'.$row["allergy"].'<br/><br/>
+    <label> Status : </label>'.$row["prescription"].'<br/><br/>
+    <label> Points gained : </label>'.$row["docFees"].'<br/>
     
     ';
 
@@ -121,8 +121,7 @@ if(isset($_GET["generate_bill"])){
 
   $content .= '
       <br/>
-      <h2 align ="center"> Global Hospitals</h2></br>
-      <h3 align ="center"> Bill</h3>
+      <h2 align ="center"> TechTidy</h2></br>
       
 
   ';
@@ -194,7 +193,7 @@ function get_specs(){
 
 <style>
     .navbar-nav {
-        margin-left: auto; /* Pushes the "Profile" link to the right */
+        margin-left: auto;
     }
 </style>
 
@@ -226,8 +225,8 @@ function get_specs(){
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-dash-list" data-toggle="list" href="#list-dash" role="tab" aria-controls="home">Dashboard</a>
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
-      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
+      <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Points </a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Disposal History</a>
 
     </div><br>
   </div>
@@ -455,9 +454,9 @@ function get_specs(){
                             if(($row['userStatus']==1) && ($row['doctorStatus']==1)) {
                                 echo "Active";
                             } elseif(($row['userStatus']==0) && ($row['doctorStatus']==1)) {
-                                echo "Cancelled by You";
+                                echo "Cancelled";
                             } elseif(($row['userStatus']==1) && ($row['doctorStatus']==0)) {
-                                echo "Cancelled by Doctor";
+                                echo "Cancelled";
                             }
                         ?>
                     </td>
@@ -500,10 +499,10 @@ function get_specs(){
                     <th scope="col">Booking ID</th>
                     <th scope="col">Scheduled Date</th>
                     <th scope="col">Scheduled Time</th>
-                    <th scope="col">Diseases</th>
-                    <th scope="col">Allergies</th>
-                    <th scope="col">Prescriptions</th>
-                    <th scope="col">Bill Payment</th>
+                    <th scope="col">Device</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">status</th>
+                    <th scope="col">Acknoweledgement</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -539,7 +538,7 @@ function get_specs(){
 
                               <a href="admin-panel.php?ID=<?php echo $row['ID']?>">
                               <input type ="hidden" name="ID" value="<?php echo $row['ID']?>"/>
-                              <input type = "submit" onclick="alert('Bill Paid Successfully');" name ="generate_bill" class = "btn btn-success" value="Pay Bill"/>
+                              <input type = "submit" onclick="alert('Disposed Successfully');" name ="generate_bill" class = "btn btn-success" value="Download"/>
                               </a>
                               </td>
                               </form>

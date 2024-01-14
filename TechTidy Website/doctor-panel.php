@@ -66,17 +66,23 @@ if(isset($_GET['cancel']))
 
   <style >
     .bg-primary {
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+      background: -webkit-linear-gradient(left, #f5bf23, #00c6ff);
 }
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #342ac1;
-    border-color: #007bff;
+    background-color: #f5bf23;
+    border-color: #f5bf23;
 }
 .text-primary {
-    color: #342ac1!important;
+    color: #f5bf23!important;
 }
+
+.btn-primary{
+  background-color: #f5bf23;
+  border-color: #f5bf23;
+}
+
   </style>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

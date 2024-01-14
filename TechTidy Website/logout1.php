@@ -19,8 +19,8 @@ session_destroy();
 }
     </style>
   </head>
-  <body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff);color:white;padding-top:100px;text-align:center;">
-    <h3>You have logged out.</h3><br><br>
+  <body style="            background: -webkit-linear-gradient(left, #f5bf23, #00c6ff);
+;color:white;padding-top:100px;text-align:center;">    <h3>You have logged out.</h3><br><br>
     <a href="index.php" class="btn btn-outline-light">Back to Home Page</a>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
