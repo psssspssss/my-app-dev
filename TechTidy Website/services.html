@@ -46,6 +46,8 @@
       <div id="info-btn" class="fas fa-info-circle"></div>
       <div id="search-btn" class="fas fa-search"></div>
       <div id="login-btn" class="fas fa-user"></div>
+      <div id="camera-btn" class="fas fa-camera"></div>
+
    </div>
 
    <form action="" class="login-form">
@@ -63,13 +65,17 @@
    
 
    <script>
-      document.getElementById('camera-btn').addEventListener('click', function() {
-        // Show a warning message
-        alert('Please log in to scan your device.');
-        
-        // Redirect to index.php
-        window.location.href = 'index.php';
-      });
+      
+      document.addEventListener('DOMContentLoaded', function() {
+         document.getElementById('camera-btn').addEventListener('click', function() {
+           // Show a warning message
+           alert('Please log in to scan your device.');
+           
+           // Redirect to index.php
+           window.location.href = 'index.php';
+         });
+       });
+       
     </script>
 
 

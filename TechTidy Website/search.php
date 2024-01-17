@@ -16,7 +16,7 @@ if(isset($_POST['search_submit'])){
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     </head>
-    <body style="background-color: white; color:  #f5bf23; text-align: center; padding-top: 50px;">
+    <body style="background: -webkit-linear-gradient(left, #f5bf23, #00c6ff); text-align: center; padding-top: 50px;">
     <div class="container" style="text-align: left;">
       <center><h3>Search Results</h3></center><br>
       <table class="table table-hover">

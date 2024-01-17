@@ -72,8 +72,8 @@ if(isset($_POST['prescribe']) && isset($_POST['pid']) && isset($_POST['ID']) && 
   </button>
 
   <style >
-    .bg-primary {
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+   .bg-primary {
+      background: -webkit-linear-gradient(left, #f5bf23, #00c6ff);
 }
 .list-group-item.active {
     z-index: 2;
@@ -82,12 +82,12 @@ if(isset($_POST['prescribe']) && isset($_POST['pid']) && isset($_POST['ID']) && 
     border-color: #007bff;
 }
 .text-primary {
-    color: #342ac1!important;
+    color: #f5bf23;
 }
 
 .btn-primary{
-  background-color: #3c50c1;
-  border-color: #3c50c1;
+  background-color: #f5bf23;
+  border-color: #f5bf23;
 }
   </style>
 

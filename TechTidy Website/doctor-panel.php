@@ -113,7 +113,7 @@ if(isset($_GET['cancel']))
     <div class="list-group" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" href="#list-dash" role="tab" aria-controls="home" data-toggle="list">Dashboard</a>
       <a class="list-group-item list-group-item-action" href="#list-app" id="list-app-list" role="tab" data-toggle="list" aria-controls="home">Recyclers</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home"> Prescription List</a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home"> History</a>
       
     </div><br>
   </div>
@@ -177,8 +177,6 @@ if(isset($_GET['cancel']))
                     <th scope="col">Appointment Date</th>
                     <th scope="col">Appointment Time</th>
                     <th scope="col">Current Status</th>
-                    <th scope="col">Approved</th>
-                    <th scope="col">Declined</th>
 
                   </tr>
                 </thead>
@@ -237,7 +235,7 @@ if(isset($_GET['cancel']))
 
                         <a href="prescribe.php?pid=<?php echo $row['pid']?>&ID=<?php echo $row['ID']?>&fname=<?php echo $row['fname']?>&lname=<?php echo $row['lname']?>&appdate=<?php echo $row['appdate']?>&apptime=<?php echo $row['apptime']?>"
                         tooltip-placement="top" tooltip="Remove" title="prescribe">
-                        <button class="btn btn-success">Prescibe</button></a>
+                        <button class="btn btn-success">Accept</button></a>
                         <?php } else {
                             echo "-";
                             } ?>

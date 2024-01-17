@@ -85,7 +85,7 @@ function searchOnGoogleMaps() {
 searchOnGoogleMaps.init();
 
 //npm install eslint-plugin-react@latest --save-dev
-//npx eslint "D:\vs folders\today\Src\js\app.js"
+//npx eslint "C:\xampp\htdocs\orig3\src"
 
 //npm install --save -dev jest
 // npx jest "D:\vs folders\today\Src\js\app.js"
