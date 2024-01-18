@@ -8,3 +8,6 @@ sqlparse==0.4.3
 tzdata==2022.7
 whitenoise==6.3.0
 tensorflow==2.8.0
+
+
+
