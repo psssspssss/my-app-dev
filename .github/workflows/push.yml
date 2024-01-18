@@ -18,7 +18,7 @@ jobs:
 
       - name: Install Bandit
         run: |
-          pip install bandit
+          pip install -vvv bandit
           bandit -r .
 
   zap_scan:
