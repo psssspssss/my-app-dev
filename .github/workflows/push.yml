@@ -15,11 +15,13 @@ jobs:
           git config --global user.name "hrk-2109"
       - name: Checkout code
         uses: actions/checkout@v2
-
+        
       - name: Install Bandit
         run: |
-          pip install -vvv bandit
-          bandit -r .
+          pip install bandit
+
+      - name: Run Bandit Security Testing
+        run: bandit -r .
 
   zap_scan:
     runs-on: ubuntu-latest
