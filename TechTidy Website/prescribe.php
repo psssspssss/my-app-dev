@@ -142,7 +142,7 @@ if(isset($_POST['prescribe']) && isset($_POST['pid']) && isset($_POST['ID']) && 
                   <input type="hidden" name="pid" value="<?php echo $pid ?>" />
                   <input type="hidden" name="ID" value="<?php echo $ID ?>" />
                   <br><br><br><br>
-          <input type="submit" name="prescribe" value="Prescribe" class="btn btn-primary" style="margin-left: 40pc;">
+          <input type="submit" name="prescribe" value="Submit" class="btn btn-primary" style="margin-left: 40pc;">
           
         </form>
         <br>
