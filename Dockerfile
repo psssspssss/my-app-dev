@@ -1,12 +1,23 @@
-FROM python:3.9
+# Use an official Node.js runtime as a parent image
+FROM node:16
 
-WORKDIR /app/backend
+# Set the working directory in the container
+WORKDIR /app
 
-COPY requirements.txt /app/backend
-RUN pip install -r requirements.txt
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-COPY . /app/backend
+# Install app dependencies, including Material-UI 5
+RUN npm install
 
-EXPOSE 8000
+# Copy the rest of the application code to the working directory
+COPY . .
 
-CMD python /app/backend/manage.py runserver 0.0.0.0:8000
+# Build the React app
+RUN npm run build
+
+# Expose the port that the app will run on (adjust if needed)
+EXPOSE 3000
+
+# Define the command to start the app
+CMD ["npm", "start"]
