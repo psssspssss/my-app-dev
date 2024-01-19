@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 
       containers:
       - name: youtube-clone-app
-        image: /youtube1:latest
+        image: /youtube:latest
         imagePullPolicy: "Always"
         ports:
         - containerPort: 3001
