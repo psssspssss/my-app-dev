@@ -20,4 +20,4 @@ spec:
         image: /youtube1:latest
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
