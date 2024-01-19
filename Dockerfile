@@ -1,30 +1,20 @@
-# Stage 1: Node.js Build Stage
-FROM node:16 as node_builder
+# Use an official Node.js runtime as a parent image
+FROM node:16
 
+# Set the working directory in the container
 WORKDIR /app
 
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Install app dependencies, including Material-UI 5
 RUN npm install
 
+# Copy the rest of the application code to the working directory
 COPY . .
 
+# Build the React app (replace 'your-build-command-here' with your actual build command)
 RUN npm run build
-
-
-# Stage 2: Python Runtime Stage
-FROM python:3.8
-
-WORKDIR /app
-
-# Copy the Node.js build artifacts
-COPY --from=node_builder /app/build /app/build
-
-# Copy Python dependencies file
-COPY requirements.txt ./
-
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port that the app will run on (adjust if needed)
 EXPOSE 3000
