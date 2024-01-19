@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KTF5MWGKZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4KTF5MWGKZ');
+</script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -154,7 +163,7 @@
     <div class="camera-container" style="display: none;">
       <video id="camera-feed" autoplay></video>
       <div class="capture-scan-buttons">
-        <button class="capture-button" onclick="window.location.href = 'recycle.html'">Capture</button>
+        <button class="capture-button"><a href="recycle.html">Click </a><a href="recycle1.html">here </a><a onclick="captureFunction()"> to capture</a></button>
       </div>
     </div>
     
